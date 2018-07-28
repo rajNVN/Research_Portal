@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+    background: url({% static 'images/Website-Design-Background.png' %}) fixed;
+    background-size: 100%;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    outline: none;
+}
+  
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 30px;
+    width:700px;
+	margin: 0 auto;
+	
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <form action="/action_page.php">
+      <label for="USN">REGISTER NUMBER</label>
+    <input type="text" id="fname" name="USN" placeholder="REGSITER NUMBER">
+    <label for="fname">FIRST NAME</label>
+    <input type="text" id="fname" name="firstname" placeholder="FIRST NAME">
+
+    <label for="lname">DATE OF BIRTH</label>
+    <input type="text" id="lname" name="lastname" placeholder="LAST NAME">
+
+    <label for="country">CHOOSE YOUR LANGUAGE</label>
+    <select id="country" name="country">
+      <option value="australia">C PROGRAMMING</option>
+      <option value="canada">JAVA</option>
+      <option value="usa">PYTHON</option>
+    </select>
+
+      <label for="subject"><font size=+1>WRITE A SNIPPET OF CODE WHICH LEADS US FURTHER</font></label>
+    <textarea id="subject" name="subject" placeholder="WRITE YOUR CODE" style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+</html>

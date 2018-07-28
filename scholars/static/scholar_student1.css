@@ -1,0 +1,458 @@
+body {
+    font-family: sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    background: whitesmoke url(images/Nature-Background-Wallpapers-9.jpg) fixed;
+    background-size: cover;
+    margin: 0px;
+}
+
+/*.{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}*/
+
+#sidebar {
+    position: fixed;
+    width: 230px;
+    height: 100%;
+    top: 60px;
+    min-width: 200px;
+    background: black;
+    left: 0px;
+    transition: all 600ms linear;
+}
+
+#sidebar ul li {
+    color: white;
+    list-style: none;
+    margin-top: 2px;
+    margin-bottom: inherit;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding: inherit;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+}
+
+#sidebar .toggle-button {
+    position: absolute;
+    left: 250px;
+    top: 20px;
+
+}
+
+#sidebar.active {
+    left: -230px;
+}
+
+#sidebar .toggle-button span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background: #151719;
+    margin: 3px 0px;
+}
+
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+.nav {
+    background: black;
+    height: 60px;
+    width: 1350px;
+    position: fixed;
+}
+
+ul {
+    list-style: none;
+
+}
+
+.nav .left li {
+    float: right;
+}
+
+.nav .left li a {
+    display: block;
+    padding: 22px;
+    line-height: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+
+}
+
+.run {
+    position: fixed;
+}
+
+a {
+    display: block;
+    padding: 50px;
+    line-height: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+}
+
+.nav .left a:hover {
+    background: white;
+    color: black;
+}
+
+.one {
+    border-color: black;
+}
+
+#sidebar .one li a:hover {
+    background: white;
+    color: black;
+
+}
+
+#sidebar .one li a {
+    background: black;
+    color: white;
+
+}
+
+.nav li.last {
+    float: right;
+    padding: 0px;
+
+}
+
+.nav li.last a {
+    color: white;
+}
+
+.nav .las {
+    float: left;
+    display: block;
+    padding: 27px;
+    line-height: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+
+}
+
+.mainBody {
+    padding-left: 300px;
+    padding-top: 75px;
+
+}
+
+#main2 {
+    float: left;
+    border-radius: 300px;
+}
+
+.main3 {
+    float: left;
+    left: 50px;
+    padding-left: 50px;
+    padding-top: 40px;
+
+}
+
+.main4 {
+    width: 900px;
+    height: 50px;
+    clear: both;
+    background-color: aliceblue;
+}
+
+ul {
+    list-style: none;
+
+}
+
+.main4 .m5 li {
+    float: left;
+}
+
+a {
+    display: block;
+    padding: 30px;
+    line-height: 3px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.main4 .m5 li #na {
+    float: right;
+}
+
+#f1, #f2, #f3, #f4, #f5 {
+    width: 900px;
+    height: 50px;
+    background-color: floralwhite;
+}
+
+.main4 .m5 #na {
+    float: right;
+}
+
+#sidebar .one #super {
+    background-color: whitesmoke;
+    color: black;
+}
+
+p {
+    text-align: left;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-top: 20px;
+
+}
+
+.ma {
+    width: 102%;
+    height: 20px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-left: 6px;
+    padding-bottom: 30px;
+    padding-right: 5px;
+    border: 4px solid silver;
+    font-family: sans-serif;
+
+}
+
+#panel, #flip {
+    padding: 20px;
+    width: 96%;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #aaa;
+    border: solid 1px #c3c3c3;
+    color: white;
+    font-size: large;
+}
+
+#flip {
+    height: 25px;
+    position: inherit;
+}
+
+flip1, flip2, flip h4 {
+    position: sticky;
+}
+
+#panel {
+    padding-left: 20px;
+    padding-right: 0px;
+    width: 98%;
+    float: left;
+    height: auto;
+    color: white;
+    background-color: #ccc;
+}
+
+#panel1, #flip1 {
+    padding: 20px;
+    width: 96%;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #aaa;
+    border: solid 1px #c3c3c3;
+    color: white;
+    font-size: large;
+    position: inherit;
+}
+
+#flip1 {
+    height: 25px;
+    position: inherit;
+
+}
+
+#panel1 {
+    padding-left: 20px;
+    padding-right: 0px;
+    width: 98%;
+    float: left;
+    height: auto;
+    color: white;
+    background-color: #ccc;
+}
+
+#panel2, #flip2 {
+    padding: 20px;
+    width: 96%;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #aaa;
+    border: solid 1px #c3c3c3;
+    color: white;
+    font-size: large;
+    position: inherit;
+}
+
+#flip2 {
+    height: 25px;
+    position: inherit;
+
+}
+
+#panel2 {
+    padding-left: 20px;
+    padding-right: 0px;
+    width: 98%;
+    float: left;
+    height: auto;
+    color: white;
+    background-color: #ccc;
+}
+
+#panel4, #flip4 {
+    padding: 20px;
+    width: 96%;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #aaa;
+    border: solid 1px #c3c3c3;
+    color: white;
+    font-size: large;
+    position: inherit;
+}
+
+#flip4 {
+    height: 25px;
+    position: inherit;
+
+}
+
+#panel4 {
+    padding-left: 20px;
+    padding-right: 0px;
+    width: 98%;
+    float: left;
+    height: auto;
+    color: white;
+    background-color: #ccc;
+}
+
+#panel5, #flip5 {
+    padding: 20px;
+    width: 96%;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #686869;
+    border: solid 1px #c3c3c3;
+    color: white;
+    font-size: large;
+    position: inherit;
+}
+
+#flip5 {
+    height: 25px;
+    position: inherit;
+
+}
+
+#panel5 {
+    padding-left: 20px;
+    padding-right: 0px;
+    width: 98%;
+    float: left;
+    height: auto;
+    color: white;
+    background-color: #ccc;
+}
+
+#pic {
+    padding-top: 0px;
+    top: 100px;
+    height: 150px;
+    width: 150px;
+    float: left;
+    border-radius: 70px;
+}
+
+.k {
+    float: left;
+    padding: 10px;
+
+}
+
+thead th {
+    top: 0px;
+    padding: 10px;
+    border: 1px solid black;
+
+}
+
+#m {
+    position: static;
+}
+
+.main {
+    width: 90%;
+
+    height: 100%;
+    background-color: white;
+    border-radius: 2px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-top: 20px;
+    padding-right: 40px;
+}
+
+table {
+    width: 98%;
+    height: 100px;
+    position: relative;
+    border: 1px solid white;
+    padding-top: 0;
+
+}
+
+table {
+
+    color: black;
+    left: 30px;
+}
+
+td {
+    background-color: whitesmoke;
+}
+
+tr {
+    border: 1px solid black;
+}
+
+table #thea th {
+    width: 160px;
+    padding: 10px;
+    background-color: #aaaaaa;
+    color: white;
+    border: none;
+}
+
+#t {
+    width: 75%;
+    padding-left: 30px;
+    padding: 17px;
+    height: auto;
+}
+
+#d {
+    text-align: center;
+
+}
+
+tr {
+    height: 30px;
+}
+
+
+

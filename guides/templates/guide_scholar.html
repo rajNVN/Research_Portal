@@ -1,0 +1,137 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'guide_scholar.css' %}">
+    <!--<link rel="stylesheet" href="ViewYourScholars.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+        {% for scholar in scholars %}
+             #panel{{ forloop.counter }}, #flip{{ forloop.counter }}{
+    padding: 20px;
+    width: 96%;
+    border-radius: 5px;
+    text-align: center;
+    background-color:#aaa;
+    border: solid 1px #c3c3c3;
+    color: white;
+    font-size: large;
+    position: inherit;
+}
+        #flip{{ forloop.counter }}{
+            height: 25px;
+            position: inherit;
+
+        }
+
+#panel{{ forloop.counter }} {
+    padding-left: 20px;
+    padding-right: 0px;
+    width: 98%;
+    float: left;
+    height: auto;
+    color: white;
+    background-color: #ccc;
+}
+        {% endfor %}
+    </style>
+    <script>
+        {% for scholar in scholars %}
+            $(document).ready(function(){
+                $("#flip{{ forloop.counter }}").click(function(){
+                    $("#panel{{ forloop.counter }}").slideToggle("slow");
+                });
+            });
+        {% endfor %}
+    </script>
+</head>
+<body>
+<div class="run">
+    <nav class="nav">
+        <div class="nav-mobile">
+            <ul class="left">
+                <li class="last"><a href="/logout/"><i class="fa fa-sign-out"></i>LOGOUT</a></li>
+                <li>&nbsp;&nbsp;</li>
+                <li class="last"><a href="#" class="4"><i class="fa fa-envelope"></i>ABOUT</a></li>
+                <li class="las" style="float:left; margin-left:0px;"><i class="fa fa-user"></i> &nbsp;HELLO {{ guides.Name }} &nbsp;&nbsp;</li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div id="sidebar">
+    <div class="toggle-button" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul class="one">
+        <li> <a href="/guides/home"><i class="fa fa-home"></i>HOME</a></li>
+        <li> <a href="/guides/scholar" id="super"><i class="fa fa-user"></i>SCHOLAR</a></li><li><a href="/guides/student/"><i class="fa fa-user"></i>STUDENT</a></li>
+    </ul>
+</div>
+<div class="mainBody" >
+    <h2>Welcome {{ guides.Name }}</h2><br>
+    <div class="main">
+        <div class="ma" style="color:white;background-color: black">
+            <p><font size=+2>Scholars who are currently working under you</font></p>
+        </div><br>
+        <div class="main1">
+            {% for scholar in scholars %}
+            <div style=" width : 103%; float:center;" id="m">
+                <div id="flip{{ forloop.counter }}">
+                    <h4 style="float:left;">{{ scholar.Name }}</h4>
+                    <h4 style="float:right;">{{ scholar.paper_set.all|length }} Papers</h4>
+                </div>
+                <div id="panel{{ forloop.counter }}" style="display:none;">
+                    <div class="j">
+                        <img alt="{{ scholar.Name }}" src="{{ scholar.Photo.url }}" id="pic">
+                    </div>
+                    <div class="k">
+                        <table border="1" width="640px" cellspacing="1" cellpadding="20" style="position:static;">
+                            <thead id="thea">
+                            <tr>
+                                <th style="text-align:center; width:100px;">REGISTER NUMBER</th>
+                                <th style="text-align:left;background-color:white;color:black;">{{ scholar.USN }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td id="t" style="text-align:center;background-color:cadetblue;color:white;"><span id="meenu">BRANCH</span></td>
+                                <td id="d" style="text-align:left;background-color:white;color:black;padding-left:10px;">{{ scholar.Group.Name }} </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br><br><br>
+                    </div>
+                    <div class="k">
+                        <table border="1" width="100%" cellspacing="0" cellpadding="20">
+                            <thead style="background-color:cadetblue;">
+                            <tr>
+                                <th style="text-align:center">PAPER_TITLE</th>
+                                <th> STATUS </th>
+                                <th>NO OF STUDENTS ASSIGNED</th>
+                                <th>PROGRESS</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for paper in scholar.paper_set.all %}
+                            <tr>
+                                <td id="t"style="width: 350px"><span id="meenu">{{ paper.Title }}</span></td>
+                                <td id="d" style="width: 150px"><span id="meenu">{{ paper.Status|upper }}</span></td>
+                                    <td id="d"><span id="meenu">{{ paper.p_student_set.all|length }}</span></td>
+                                <td id="d">
+                                    <progress value="1" max="10" style="width:50px;"></progress>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div><br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

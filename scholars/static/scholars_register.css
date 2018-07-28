@@ -1,0 +1,76 @@
+
+        .main{
+            padding: 10px;
+        height: auto;
+        background-color:white;
+        align-content: center;
+            opacity: 0.91;
+    }
+        p{
+            text-align: left;
+            color: white;
+        }
+      p #2{
+            text-align: center;
+        }
+        input[type=text]{
+            width: 550px;
+            border: 1px solid black;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 17px;
+            box-sizing: border-box;
+            
+        }
+     input[type=text]:focus{
+            border:2px solid blue;
+        }
+        #sel{
+            width: 400px;
+            padding: 15px;
+            border-radius: 5px;
+            border-color: black;
+            outline: none;
+        }
+        #sel:focus{
+            border-color: green;
+        }
+    #ma{
+         width: 130px;
+            padding: 17px;
+            border-radius: 12px;
+            background-color:lightcyan;
+        border: 1px solid black;
+        cursor: pointer;
+        }
+        #ma1{
+             width: 130px;
+            padding: 17px;
+            border-radius: 12px;
+        cursor: pointer;
+            background-color:#ccc;
+            border: 1px solid black;
+        }
+        .form-input{
+            padding-left:130px;
+            opacity: 0.98;
+        }
+        i{
+            color: #ccc;
+            
+        }
+        .InputIcon input[type=text]{
+            
+            padding-left: 40px;
+        }
+        .InputIcon{
+            position: relative;
+            
+        }
+        .InputIcon i{
+            position: absolute;
+            left: 1px;
+            top: 10px;
+            padding: 15px 8px;
+        }

@@ -1,0 +1,151 @@
+#main {
+    width: 300px;
+    height: 359px;
+    background-color: white;
+    opacity: 0.94;
+    padding: 60px;
+
+}
+
+.cent {
+    height: 60px;
+    width: 300px;
+    background-color: #ccc;
+    padding: inherit;
+    opacity: 1;
+}
+
+.cent ul {
+    margin: 0;
+    padding: 0;
+
+}
+
+.cent li {
+    list-style-type: none;
+    float: left;
+    display: block;
+    width: 170px;
+    height: 60px;
+    text-align: center;
+    line-height: 55px;
+    font-size: 25px;
+
+}
+
+.cent li a {
+    text-decoration: none;
+    color: brown;
+}
+
+#h {
+    color: darkblue;
+}
+
+#c {
+    color: black;
+}
+
+#simple_form {
+    text-align: center;
+    margin: 0px 20px;
+}
+
+#registration {
+
+    background-color: lavender;
+    padding: 0px 0px;
+    height: auto;
+}
+
+#button {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+#button:focus {
+    border-color: blue;
+}
+
+input[type=text], input[type=email], input[type=password], input[type=date] {
+    width: 350px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 15px;
+    box-sizing: border-box;
+
+}
+
+#but1 {
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 14px;
+    background-color: forestgreen;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#but2 {
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 14px;
+    box-sizing: border-box;
+    background-color: orangered;
+    cursor: pointer;
+
+}
+
+#button:focus {
+    border: 2px solid green;
+}
+
+#but {
+    width: 30px;
+}
+
+input[type=text]:focus + i {
+    color: darkblue;
+
+}
+
+registration::before {
+    content: "\f007";
+    font-family: "FontAwesome";
+    padding-left: 0px;
+}
+
+i {
+    color: #ccc;
+}
+
+li i {
+    color: #aaa;
+}
+
+.InputIcon input[type=text], input[type=email], input[type=password] {
+
+    padding-left: 40px;
+}
+
+.InputIcon {
+    position: relative;
+
+}
+
+.InputIcon i {
+    position: absolute;
+    left: 60px;
+    top: 10px;
+    padding: 15px 8px;
+}

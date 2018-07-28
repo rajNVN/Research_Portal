@@ -1,0 +1,258 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'scholar_ho.css' %}">
+    <style>
+        .main{
+            width: 95%;
+        }
+       body {
+            background: #666;
+           font-family: sans-serif;
+           font-size: 17px;
+           font-weight: bold;
+        }
+
+        .mainBody{
+            padding-left: 270px;
+            padding-top: 75px;
+            
+            
+        }
+       
+        .{
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif;
+        }
+        #sidebar{
+            top: 60px;
+            position: fixed;
+            width: 200px;
+            height: 100%;
+            min-width: 200px;
+            background: #151617;
+            left: 0px;
+            transition: all  600ms linear;
+        }
+        #sidebar ul li{
+            color: rgba(230,230,230,0.9);
+            list-style:none;
+            display: block;
+            margin: 0px 0px inherit;
+            padding: inherit;
+            border-bottom: 2px solid rgba(100,100,100,0.3);
+        }
+        #sidebar  .toggle-button{
+            position: absolute;
+            left: 230px;
+            top: 20px;
+            
+        }
+        #sidebar.active{
+            left: -200px;
+        }
+        
+        #sidebar .toggle-button span{
+            display: block;
+            width: 30px;
+            height: 5px;
+            background: #151719;
+            margin: 3px 0px;  
+        }
+        
+        *{
+            border: 0;
+            margin: 0;
+            padding: 0;
+            outline: 0;
+        }
+        h2{
+            color: white;
+        }
+        .nav{
+            background: black;
+            height: 60px;
+            width: 1350px;
+            position: fixed;
+        }
+        .nav .left li a{
+             display: block;
+            padding: 22px;
+            line-height: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+        }
+        ul{
+            list-style: none;
+            
+        }
+        .nav .left li{
+            float: right;
+        }
+        a{
+            display: block;
+            padding: 35px;
+            line-height: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+        }
+        .nav .left a:hover{
+            background:whitesmoke;
+            color: black;
+        }
+        
+        #sidebar .one li a:hover{
+            background: whitesmoke;
+            color: black;
+        
+        }
+   .nav li.last
+         {
+         float:right;
+             padding:0px;
+             
+         }
+      .nav .las{
+            float: left;
+          display: block;
+            padding: 27px;
+            line-height: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+          
+        }
+        #sidebar .one #super{
+            background-color: whitesmoke;
+            color: black;
+        }
+    </style>
+    <script>
+     function toggleSidebar(){
+         document.getElementById("sidebar").classList.toggle('active');
+     }
+     function unhide() {
+         alert('unh');
+         document.getElementById("phone").readOnly = false;
+         document.getElementById("mail").readOnly = false;
+         document.getElementById("address").readOnly = false;
+         document.getElementById("subm").style.display = 'block';
+         document.getElementById("hide").style.display = 'none';
+     }
+    </script>
+</head>
+<body>
+    <div>
+        <nav class="nav">
+            <div class="nav-mobile">
+                <ul class="left">
+                     <li class="last"><a href='/logout/'><i class="fa fa-sign-out"></i>LOGOUT</a></li>
+                     <li>&nbsp;&nbsp;</li>
+                     <li class="last"><a href="#" class="4"><i class="fa fa-envelope"></i>ABOUT</a></li>
+                    
+                    <li class="las" style="float:left; margin-left:0px;"><i class="fa fa-user"></i><font face="Comic Sans MS">&nbsp;HELLOW {{ user.Name.upper }}</font>&nbsp;&nbsp;</li>
+                
+                
+                </ul>
+                
+            </div>
+        
+        </nav>
+    </div>
+    <div id="sidebar">
+        <div class="toggle-button" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+        <ul class="one">
+                <li> <a href="#" id="super"><i class="fa fa-home"></i>HOME</a></li>
+                <li> <a href='/guides/scholar/'><i class="fa fa-book"></i>SCHOLAR</a></li>
+                <li><a href='/guides/student/'><i class="fa fa-user"></i>STUDENT</a></li>
+            
+    </ul>
+     </div>
+    <div class="mainBody" >
+        <h2>Welcome {{ user.Name }}</h2><br>
+        <div class="main">
+           <div class="ma">
+               <div class="ma1">
+                    <img alt="{{ user.Name }}" src="{{ user.Photo.url }}" style="height:150px;width:170px; border-radius:100px;padding:6px;">
+               </div>
+               <div class="ma2">
+               <p >NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{ user.Name.upper }}</p>
+                   <p>GUIDE_ID :&nbsp;&nbsp;{{ user.USN }} </p>
+                   <p>{{ user.Designation }}</p>
+               </div>
+            </div><br>
+            <div class="mee1" style="width:48%;border:1px solid silver;height:500px;float:left;">
+             <div style="width:98%;border-bottom:3px solid cadetblue;   height:30px;padding-top:15px;padding-left:10px;background-color: #666666;color: white;" class="mee2" >My Details</div>  <br>
+                <div class="a" >
+                    <form action='#' method="post" >{% csrf_token %}
+            <div style="border:1px solid silver;padding:15px; font-size:20px;">
+            Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" name ="name" value=' {{ user.Name.upper }}' readonly="readonly" style="width: 230px;height: 40px;color:black; ">
+            </div> 
+            <div style="border:1px solid silver;padding:15px;font-size:20px;">
+           DOB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input type="text" name="dob" value=' {{ user.DOB }}'  readonly="readonly" style="width: 230px;height: 40px;color:black; ">
+            </div> 
+                <div style="border:1px solid silver;padding:15px;font-size:20px;">
+          Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
+                     <textarea style="width:450px;border:1px solid silver;height:100px;" id='address' readonly="readonly"> {{ user.Address }}</textarea>
+            </div> 
+                 <!-- <div style="border:1px solid silver;padding:15px;font-size:20px;">
+          Gender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{{ user.Gender }}
+            </div>-->
+            <div style="border:1px solid silver;padding:15px;font-size:20px;">
+            Personal EmailID&nbsp;: <input type="email" name="email" id='mail' value='{{ user.MailId }}'  readonly="readonly" style="width: 230px;height: 40px;color:black; ">
+            </div>
+                     <div style="border:1px solid silver;padding:15px;font-size:20px;">
+            Phone No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" name="phone" id='phone' value='{{ user.Mobile }}'  readonly="readonly" style="width: 230px;height: 40px;color:black; ">
+            </div>
+            
+                </div> 
+            </div>
+             <div class="mee1" style="left:7000px;width:48%;border:1px solid silver;margin-left:520px;margin-right:0px;margin-top:0px;margin-bottom:0px;height:500px;">
+                <div style="width:98%;border-bottom:3px solid cadetblue;height:30px;padding-top:15px;background-color:#666666;color:white;padding-left:10px;" class="mee2">Academic Details</div><br>
+                 
+                   <div class="a" >
+            <div style="border:1px solid silver;padding:15px; font-size:20px;">
+            Register Number&nbsp;: <input type="text" name="usn" value='{{ user.USN }}'  readonly="readonly" style="width: 230px;height: 40px;color:black; ">
+            </div> <br>
+            <div style="border:1px solid silver;padding:15px;font-size:20px;">
+           Domain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+                <input type="text" name="domain" value='{{ user.Branch.Name.upper }}'  readonly="readonly" style="width: 230px;height: 40px;color:black; ">
+            </div><br> 
+                <div style="border:1px solid silver;padding:15px;font-size:20px;">
+          University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" name="university" value='{{ user.University.Name.upper }}'  readonly="readonly" style="width: 230px;height: 40px;color:black;">
+            </div> <br>
+                  <div style="border:1px solid silver;padding:15px;font-size:20px;">
+          Year Of Joining&nbsp;:&nbsp; <input type="text" name="yoj" value='{{ user.YearofJoining}}'  readonly="readonly" style="width: 230px;height: 40px;color:black; ">
+            </div><br>
+            <div style="border:1px solid silver;padding:15px;font-size:20px;">
+            Campus EMAIL ID&nbsp;:   <input type="email" name="email" value='{{ user.MailId }}'  readonly="readonly" style="width: 230px;height: 40px;color:black; ">
+            </div><br>
+                    
+            
+                </div>
+            <div style="margin-right:20px;float:right;">
+                <input type="text" name="usn" value='{{ user.USN }}' style="display:none;">
+                <a href="#" id="hide" onclick="unhide()" style="color: blue">edit</a>
+            <input type="submit" value="SUBMIT" id="subm" style="width:100px;height:40px;background-color:cadetblue;color:white;display: none;">
+                </form>   
+          
+                 </div>    
+                
+            </div>
+            
+            
+            
+            
+    
+        </div>
+    </div>
+</body>
+</html>

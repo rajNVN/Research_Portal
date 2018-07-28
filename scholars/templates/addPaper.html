@@ -1,0 +1,292 @@
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+       body {
+            background: #666;
+           font-family: sans-serif;
+           font-size: 17px;
+           font-weight: bold;
+        }
+        .main{
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif;
+        }
+        #sidebar{
+            position: fixed;
+            width: 200px;
+            height: 100%;
+            min-width: 200px;
+            background: #151617;
+            left: 0px;
+            transition: all  600ms linear;
+        }
+        #sidebar ul li{
+            color: rgba(230,230,230,0.9);
+            list-style:none;
+           
+            padding: inherit;
+            border-bottom: 1px solid rgba(100,100,100,0.3);
+        }
+        #sidebar  .toggle-button{
+            position: absolute;
+            left: 230px;
+            top: 20px;
+            
+        }
+        #sidebar.active{
+            left: -200px;
+        }
+        #sidebar .one #super{
+            background-color: white;
+            color: black;
+        }
+        #sidebar .toggle-button span{
+            display: block;
+            width: 30px;
+            height: 5px;
+            background: #151719;
+            margin: 3px 0px;  
+        }
+        
+        *{
+            border: 0;
+            margin: 0;
+            padding: 0;
+            outline: 0;
+        }
+        .nav{
+            background: black;
+            min-height: 60px;
+        }
+        ul{
+            list-style: none;
+            
+        }
+        .nav .left li{
+            float: right;
+        }
+        .nav .left li a{
+             display: block;
+            padding: 22px;
+            line-height: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+        }
+        a{
+            display: block;
+            padding: 35px;
+            line-height: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+        }
+        .nav .left a:hover{
+            background:whitesmoke;
+            color: black;
+        }
+        
+        #sidebar .one li a:hover{
+            background: whitesmoke;
+            color: black;
+        
+        }
+   .nav li.last
+         {
+         float:right;
+             padding:0px;
+             
+         }
+      .nav .las{
+            float: left;
+          display: block;
+            padding: 27px;
+            line-height: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+          
+        }
+        .Mainpage{
+            padding-left: 400px;
+            padding-top: 50px;
+
+        }
+        
+        .simple_form
+        {
+            text-align: center; 
+            margin: 0px 75px;
+            background-color: whitesmoke;
+        }
+        #registration{
+            width: 100%;
+            background-color:#ccc;
+            padding: 40px 0px;
+            height: 260px;
+        }
+     
+        #button:focus
+        {
+            color: blue;
+        }
+       
+        #but1{
+            width:190px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: lightgreen;
+            cursor: pointer;
+        }
+        input[type=text]:focus{
+            border-color: green;
+        }
+        #but2{
+            width: 185px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color:silver;
+            cursor: pointer;
+        
+        }
+        
+        #but{
+            width: 30px;
+        }
+        
+       .simpe_form
+        {
+            width:500px;
+            height:300px; 
+            padding-left:50px;
+            background-color:white;
+            opacity:0.9;
+            margin:0 auto;
+            position: relative;
+            float: left;
+        }
+        .add{
+            padding:20px;
+            
+        }
+       /* .form-input::before{
+            content: "\f016";
+            font-family: "FontAwesome";
+            padding-left: 10px;
+            margin: 10px;
+            
+        }
+        .form-input1::before{
+            content: "\f007";
+            font-family: "FontAwesome";
+            padding-left: 10px;
+            margin: 10px;
+            
+        }
+        */
+        input[type=text]{
+            width: 400px;
+            border: 2px solid silver;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 17px;
+            box-sizing: border-box;
+            
+        }
+       .InputIcon  i{
+            color: #ccc;
+            
+        }
+        .InputIcon input[type=text]{
+            
+            padding-left: 40px;
+        }
+        .InputIcon{
+            position: relative;
+            
+        }
+        .InputIcon i{
+            position: absolute;
+            left: 0px;
+            top: 10px;
+            padding: 15px 8px;
+        }
+    </style>
+    <script>
+    
+     function toggleSidebar(){
+         var sty=document.getElementById("simpleform").style;
+         if(sty.marginRight=='20%')
+             {
+                 sty.transition= "left 1500ms linear";
+                  sty.margin='0 auto';
+            sty.position= 'relative';
+            sty.float= 'left';
+             }
+         else{
+         sty.position='relative';
+         sty.float='right';
+         sty.marginRight='20%';
+             sty.transition="all 1500ms linear";
+         }
+         document.getElementById("sidebar").classList.toggle('active');
+     }  
+    </script>
+</head>
+<body>
+    <div>
+        <nav class="nav">
+            <div class="nav-mobile">
+                <ul class="left">
+                     <li class="last"><a href="#"><i class="fa fa-sign-out"></i>LOGOUT</a></li>
+                     <li>&nbsp;&nbsp;</li>
+                     <li class="last"><a href="#" class="4"><i class="fa fa-envelope"></i>ABOUT</a></li>
+                    
+                    <li class="las" style="float:left; margin-left:0px;"><i class="fa fa-user">&nbsp;&nbsp;</i><font face="Comic Sans MS">HELLOW SCHOLAR</font>&nbsp;&nbsp;</li>
+                
+                
+                </ul>
+                
+            </div>
+        
+        </nav>
+    </div>
+    <div id="sidebar">
+        <div class="toggle-button" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+        <ul class="one">
+                <li> <a href="verticlebar.html"><i class="fa fa-home"></i>&nbsp;HOME</a></li>
+                <li> <a href="PaperProgress.html" id="super"><i class="fa fa-book"></i>&nbsp;PAPER</a></li>
+                <li><a href=""><i class="fa fa-user"></i>&nbsp;STUDENT</a></li>
+            
+        </ul>
+    </div>
+    <div class="Mainpage">
+        <div class="simpe_form" id="simpleform">
+            <form class="add" action=""><br><br>
+                <span id="b"> ADD YOUR RESEARCH PAPER...</span><br>
+              <div class="form-input1" > 
+               
+                <br>
+                <div class="form-input">
+                    <div class="InputIcon">
+
+                    <input type="text" name="titleof paper" placeholder="PAPER TITLE" id="button">
+                      <i class="fa fa-file fa-lg fa-fw" aria-hidden="True"></i>
+                    </div>
+                </div><br><br>
+               <input type="submit" name="submit" id="but1" value="OKAY">&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="reset" name="clear" id="but2" value="CANCEL">
+                </div>    
+            </form>
+        
+        </div>
+    </div>
+</body>
+</html>

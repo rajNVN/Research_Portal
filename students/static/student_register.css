@@ -1,0 +1,52 @@
+            .ma
+            {
+               
+                height: 165px;
+                border-top: none;
+               /* background-color: whitesmoke;*/
+                background: linear-gradient(whitesmoke,white);
+            }
+            .ma1{
+                width: 200px;
+                /*background-color: whitesmoke;*/
+                float: left;
+            }
+            .ma2{
+                left:100px;
+        
+                float: left;
+                width:795px;
+                height: 160px;
+                font-family:monospace;
+                font-size: 20px;
+                border: 1px solid cadetblue;
+                border-radius: 20px;
+                                
+            }
+input[type=submit]{
+    border: 1px solid #ccc;
+    width: 100px;
+    height:  40px;
+    background-color: cadetblue;
+    color: white;
+}
+.ma3{
+                left: 90px;
+        
+                float: left;
+                width:795px;
+                height: auto;
+                font-family:monospace;
+                font-size: 20px;
+                             
+}
+ #sel{
+            width: 200px;
+            padding: 12px;
+            border-radius: 5px;
+            border-color: black;
+            outline: none;
+        }
+        #sel:focus{
+            border-color: green;
+        }

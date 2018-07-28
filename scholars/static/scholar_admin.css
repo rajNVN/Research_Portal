@@ -1,0 +1,139 @@
+.main1 {
+    height: 1300px;
+    padding: inherit;
+    align-content: center;
+    background-size: 50% 700px;
+    background-color: ghostwhite;
+    opacity: 0.96;
+    top: 100px;
+}
+
+#m {
+    text-align: center;
+    color: black
+}
+
+.main2 {
+    padding-left: 200px;
+}
+
+input[type=text], input[type=email], input[type=password], #button3{
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 17px;
+    box-sizing: border-box;
+
+}
+
+#but{
+    width: 50px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+input[type=date]
+{
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 17px;
+    box-sizing: border-box;
+
+}
+
+
+
+#button1 {
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 17px;
+    box-sizing: border-box;
+
+}
+
+#button2 {
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 17px;
+    box-sizing: border-box;
+
+}
+
+input[type=text]:focus {
+    border: 2px solid green;
+}
+
+input[type=email]:focus {
+    border: 2px solid green;
+}
+
+input[type=password]:focus {
+    border: 2px solid green;
+}
+
+.iconinput input[type=text], input[type=email], input[type=password], #button3{
+
+    padding-left: 50px;
+}
+
+.iconinput {
+    position: relative;
+    color: lightslategrey;
+
+}
+
+.iconinput i {
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    padding: 10px 10px;
+
+}
+
+#button3 {
+    height: 60px;
+    padding-top: 10px;
+}
+
+#button4 {
+    width: 600px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 17px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+p {
+    color: white;
+}
+
+#but1, #but2 {
+    width: 200px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: skyblue;
+    cursor: pointer;
+}
+
+#but3 {
+    border-color: black;
+}
+
+#subject1 {
+    width: 60px;
+    height: 30px;
+    background-color: green;
+
+}

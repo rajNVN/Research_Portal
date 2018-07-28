@@ -1,0 +1,371 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'guide_student.css' %}">
+    <style>
+       
+</style>  
+        
+    <script>
+     function toggleSidebar(){
+         document.getElementById("sidebar").classList.toggle('active');
+     }  
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+    
+    $(document).ready(function(){
+    
+    $("#flip").click(function(){
+        $("#panel").slideToggle("slow");    
+    });
+        });
+        
+    $(document).ready(function(){
+    
+    $("#flip1").click(function(){
+        $("#panel1").slideToggle("slow");    
+    });
+        });
+    $(document).ready(function(){
+    
+    $("#flip2").click(function(){
+        $("#panel2").slideToggle("slow");    
+    });
+        });
+        
+    $(document).ready(function(){
+    
+    $("#flip4").click(function(){
+        $("#panel4").slideToggle("slow");    
+    });
+        });
+    </script>
+    
+</head>
+<body>
+    <div class="run">
+        <nav class="nav">
+            <div class="nav-mobile">
+                <ul class="left">
+                     <li class="last"><a href="/home/"><i class="fa fa-sign-out"></i>LOGOUT</a></li>
+                     <li>&nbsp;&nbsp;</li>
+                     <li class="last"><a href="#" class="4"><i class="fa fa-envelope"></i>ABOUT</a></li>
+                   <li class="las" style="float:left; margin-left:0px;"><i class="fa fa-user"></i> &nbsp;HELLOW GUIDE &nbsp;&nbsp;</li>
+                
+                
+                </ul>
+                
+            </div>
+        
+        </nav>
+    </div>
+    <div id="sidebar">
+        <div class="toggle-button" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+        <ul class="one">
+                <li> <a href="/guides/home/"><i class="fa fa-home"></i>HOME</a></li>
+                <li> <a href="/guides/scholar/"><i class="fa fa-user"></i>SCHOLAR</a></li>
+                <li><a href="/guides/student/" id="super" ><i class="fa fa-user"></i>STUDENT</a></li>
+            
+        </ul>
+    </div>
+    <div class="mainBody" >
+        <h2>Welcome GuideName</h2><br>
+        <div class="main">
+              <div class="ma">
+               <p><font size=+1>Students who have requested to do Research Under Phd Scholars</font></p> 
+            </div><br>
+ <div class="main1">
+     {% for foo in x %}
+        <div style=" width : 103%; float: contour " id="m">
+        <div id="flip{{ foo }}">
+            <h4 style="color:white;float:left;">Student name</h4>
+            <h4 style="float:right;">100</h4>
+        </div>
+        <div id="panel{{ foo }}" style="display:none;">
+            <div class="j">
+            <img alt="Schlar" src="WebDev.jpg" id="pic">
+            </div>
+            <div class="k">
+             <table border="1" width="100%" cellspacing="0" cellpadding="20">
+                <thead id="thea">
+                    <tr>
+                    <th style="text-align:left">INTERESTED DOMAIN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="t"><span id="meenu">Wireless Sensor  Networks</span></td>
+                    </tr>
+                     <tr>
+                         <td id="t"><span id="meenu"> Data Mining</span></td>
+                    </tr>
+                     <tr>
+                         <td id="t"><span id="meenu">Artificial Intelligency</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="k">
+                <table border="1" width="100%" cellspacing="0" cellpadding="20">
+                    <thead id="thea">
+                    <tr>
+                        <th>KNOWN LANGUAGES</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td id="d">C Programming</td>
+                    </tr>
+                    <tr>
+                        <td id="d">Java</td>
+                    </tr>
+                    <tr>
+                        <td id="d">Python</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+         <p></p>
+     {% endfor %}
+
+
+<!--     <div style=" width : 103%; float : center;" id="m">
+        <div id="flip1">
+            <h4 style="float:left;">Sharada</h4>
+            <h4 style="float:right;">99</h4>
+        </div>
+        <div id="panel1" style="display:none;">
+            <div class="j">
+            <img alt="Schlar" src="WebDev.jpg" id="pic">
+            </div>
+            <div class="k">
+             <table border="1" width="100%" cellspacing="0" cellpadding="20">
+
+                <thead id="thea">
+                    <tr>
+                    <th style="text-align:left">INTERESTED DOMAIN</th>
+        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="t"><span id="meenu">Wireless Sensor  Networks</span></td>
+                
+                    </tr>
+                     <tr>
+                         <td id="t"><span id="meenu"> Data Mining</span></td>
+                         
+                        
+                    </tr>
+                     <tr>
+                         <td id="t"><span id="meenu">Artificial Intelligency</span></td>
+                
+                        
+                    </tr>
+                    
+                
+                </tbody>
+            </table>
+            </div>
+            <div class="k">
+            <table border="1" width="100%" cellspacing="0" cellpadding="20">
+
+                <thead id="thea">
+                    <tr>
+        
+                    <th>KNOWN LANGUAGES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      
+                    <td id="d">
+                        C Programming
+                        </td>
+                    </tr>
+                     <tr>
+                       
+                         <td id="d">
+                             Java
+                         </td>
+                        
+                    </tr>
+                     <tr>
+                         
+                         <td id="d">Python</td>
+                        
+                    </tr>
+                    
+                
+                </tbody>
+            </table>
+    
+    
+            </div>
+        </div>    
+    </div><br>
+     <div style=" width : 103%; float : center;" id="m">
+        <div id="flip2">
+            <h4 style="float:left;">Meenu</h4>
+            <h4 style="float:right;">99</h4>
+        </div>
+        <div id="panel2" style="display:none;">
+            <div class="j">
+            <img alt="Schlar" src="meenu.jpg" id="pic">
+            </div>
+            
+            <div class="k">
+             <table border="1" width="100%" cellspacing="0" cellpadding="20">
+
+                <thead id="thea">
+                    <tr>
+                    <th style="text-align:left">INTERESTED DOMAIN</th>
+        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="t"><span id="meenu">Wireless Sensor  Networks</span></td>
+                
+                    </tr>
+                     <tr>
+                         <td id="t"><span id="meenu"> Data Mining</span></td>
+                         
+                        
+                    </tr>
+                     <tr>
+                         <td id="t"><span id="meenu">Artificial Intelligency</span></td>
+                
+                        
+                    </tr>
+                    
+                
+                </tbody>
+            </table>
+            </div>
+                <div class="k">
+            <table border="1" width="100%" cellspacing="0" cellpadding="20">
+
+                <thead id="thea">
+                    <tr>
+        
+                    <th>KNOWN LANGUAGES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      
+                    <td id="d">
+                        C Programming
+                        </td>
+                    </tr>
+                     <tr>
+                       
+                         <td id="d">
+                             Java
+                         </td>
+                        
+                    </tr>
+                     <tr>
+                         
+                         <td id="d">Python</td>
+                        
+                    </tr>
+                    
+                
+                </tbody>
+            </table>
+    
+            </div>
+        </div>    
+    </div><br>
+     <div style=" width : 103%; float : center;" id="m">
+        <div id="flip4">
+            <h4 style="float:left;">Poornima</h4>
+            <h4 style="float:right;">100</h4>
+        </div>
+        <div id="panel4" style="display:none;">
+            <div class="j">
+            <img alt="Schlar" src="WebDev.jpg" id="pic">
+            </div>
+            
+            <div class="k">
+             <table border="1" width="100%" cellspacing="0" cellpadding="20">
+
+                <thead id="thea">
+                    <tr>
+                    <th style="text-align:left">INTERESTED DOMAIN</th>
+        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="t"><span id="meenu">Wireless Sensor  Networks</span></td>
+                
+                    </tr>
+                     <tr>
+                         <td id="t"><span id="meenu"> Data Mining</span></td>
+                         
+                        
+                    </tr>
+                     <tr>
+                         <td id="t"><span id="meenu">Artificial Intelligency</span></td>
+                
+                        
+                    </tr>
+                    
+                
+                </tbody>
+            </table>
+            </div>
+                <div class="k">
+            <table border="1" width="100%" cellspacing="0" cellpadding="20">
+
+                <thead id="thea">
+                    <tr>
+        
+                    <th>KNOWN LANGUAGES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      
+                    <td id="d">
+                        C Programming
+                        </td>
+                    </tr>
+                     <tr>
+                       
+                         <td id="d">
+                             Java
+                         </td>
+                        
+                    </tr>
+                     <tr>
+                         
+                         <td id="d">Python</td>
+                        
+                    </tr>
+                    
+                
+                </tbody>
+            </table>
+    
+            </div>
+        </div>    
+    </div>-->
+ </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,392 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'guide_student.css' %}">
+    <script>
+        function toggleSidebar(){
+            document.getElementById("sidebar").classList.toggle('active');
+        }
+    </script>
+<style type="text/css">
+        {% for scholar in students %}
+             #panel{{ forloop.counter }}, #flip{{ forloop.counter }}{
+    padding: 20px;
+    width: 96%;
+    border-radius: 5px;
+    text-align: center;
+    background-color:#aaa;
+    border: solid 1px #c3c3c3;
+    color: white;
+    font-size: large;
+    position: inherit;
+}
+        #flip{{ forloop.counter }}{
+            height: 25px;
+            position: inherit;
+
+        }
+
+#panel{{ forloop.counter }} {
+    padding-left: 20px;
+    padding-right: 0px;
+    width: 98%;
+    float: left;
+    height: auto;
+    color: white;
+    background-color: #ccc;
+}
+        {% endfor %}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        {% for student in students %}
+            $(document).ready(function(){
+                $("#flip{{ forloop.counter }}").click(function(){
+                    $("#panel{{ forloop.counter }}").slideToggle("slow");
+                });
+            });
+        {% endfor %}
+    </script>
+</head>
+
+<body>
+<div class="run">
+    <nav class="nav">
+        <div class="nav-mobile">
+            <ul class="left">
+                <li class="last"><a href="/logout/"><i class="fa fa-sign-out"></i>LOGOUT</a></li>
+                <li>&nbsp;&nbsp;</li>
+                <li class="last"><a href="#" class="4"><i class="fa fa-envelope"></i>ABOUT</a></li>
+                <li class="las" style="float:left; margin-left:0px;"><i class="fa fa-user"></i> &nbsp;HELLOW GUIDE &nbsp;&nbsp;</li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div id="sidebar">
+    <div class="toggle-button" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul class="one">
+         <li> <a href="/guides/home/"><i class="fa fa-home"></i>HOME</a></li>
+        <li> <a href="/guides/scholar/"><i class="fa fa-user"></i>SCHOLAR</a></li>
+        <li><a href="/guides/student/" id="super" ><i class="fa fa-user"></i>STUDENT</a></li>
+    </ul>
+</div>
+
+<div class="mainBody" >
+    <h2>Welcome GuideName</h2><br>
+    <div class="main">
+        <div class="ma">
+            <p><font size=+1>Students who have requested to do Research Under PhD Scholars</font></p>
+        </div><br>
+        <div class="main1">
+            <div style=" width : 103%; float : center;" id="m">
+            <p style="alignment: center`">NEW REQUESTS</p>
+                {% for student in students %}
+                    {% if not scored|get_item:student %}
+                    <div id="flip{{ forloop.counter }}">
+                        <div style="width: 200px;height: inherit;float: left;">
+                        <h4 style="float:left;">{{ student.Name }}</h4>
+                        </div>
+                    <div style="width: 300px;height: inherit;float: left;">
+                        <h4 style="float:center;">{{ student.Year }} YEAR, {{ student.Course }}</h4>
+                    </div>
+                    <div style="width: auto;height: inherit;float: right;">
+                        {% for stud,data in research.items %}
+                            {% if stud is student %}
+                                <h4 style="float:left;"> Requested {{ data.When|timesince }} Ago</h4>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    </div>
+                    <div id="panel{{ forloop.counter }}" style="display:none;">
+                        <div class="j">
+                            <img alt="{{ student.Name }}" src="{{ student.Photo.url }}" id="pic">
+                        </div>
+                        <div class="k"><table border="1" width="100%" cellspacing="1" cellpadding="20" style="position:static;">
+                            <thead id="thea">
+                            <tr>
+                                <th style="text-align:center; width:100px;">REGISTER NUMBER</th>
+                                <th style="text-align:left;background-color:white;color:black;">{{ student.USN }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td id="t" style="text-align:center;background-color:cadetblue;color:white;"><span id="meenu">BRANCH</span></td>
+                                <td id="d" style="text-align:left;background-color:white;color:black;padding-left:10px;">{{ student.Branch.Name }} </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="k">
+                            <table border="1"  width="340px;" cellspacing="0" cellpadding="20" style="float:left;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:left">INTERESTED DOMAIN</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for stud,domainList in domains.items %}
+                                    {% if stud is student %}
+                                        {% for domain in domainList %}
+                                            <tr>
+                                                <td id="t"><span id="meenu">{{ domain.Name }}</span></td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <table border="1"  width="300px;" cellspacing="0" cellpadding="20" style="float:left;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:left">KNOWN LANGUAGES</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for stud,languageList in languages.items %}
+                                    {% if stud is student %}
+                                        {% for language in languageList %}
+                                            <tr>
+                                                <td id="t"><span id="meenu">{{ language.name }}</span></td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="k" style="padding-left:160px;">
+                            <table border="1"  width="90%;" cellspacing="0" cellpadding="20" style="float:left;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:left">SNIPPET OF CODE &nbsp;:</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td id="t" style="height:auto;padding-top:13px;padding-right:0px;padding-left:30px;width:680px;">
+                                        {% for stud,data in research.items %}
+                                            {% if stud is student %}
+                                                <textarea style="width:559px;height:100px; border:1px solid #ccc;">{{ data.Code }}
+                                                </textarea>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div  style="clear:both;padding-right:530px;">
+                            <form action="/students/rate/" method="post">{% csrf_token %}
+                                <input type="text" name="usn" value="{{ student.USN }}" style="display: none">
+                                <input type="text" name="guide" value="{{ guide.USN }}" style="display: none">
+                                <label for="score">rate this student out of 25</label>
+                                <input type="number" min="0" max="25" name="score" placeholder="">
+                                <input type="submit" style="height:40px;width:100px;color:white;background-color:cadetblue;" value="APPROVE"></input>
+                            </form>
+                        </div>
+                        </div><br>
+                    {% endif %}
+                {% endfor %}
+            {% if students|length is scored|length %}
+                <div id="flip">
+                        <h4 style="float:left;">No new Requests</h4>
+                </div>
+            {% endif %}
+            <p>OLDER REQUESTS</p>
+                {% for student in students %}
+                    {% if scored|get_item:student %}
+                    <div id="flip{{ forloop.counter }}">
+                        <div style="width: 200px;height: inherit;float: left;">
+                        <h4 style="float:left;">{{ student.Name }}</h4>
+                        </div>
+                    <div style="width: 300px;height: inherit;float: left;">
+                        <h4 style="float:center;">{{ student.Year }} YEAR, {{ student.Course }}</h4>
+                    </div>
+                    <div style="width: auto;height: inherit;float: right;">
+                        {% for stud,data in research.items %}
+                            {% if stud is student %}
+                                <h4 style="float:left;"> Requested {{ data.When|timesince }} Ago</h4>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    </div>
+                    <div id="panel{{ forloop.counter }}" style="display:none;">
+                        <div class="j">
+                            <img alt="{{ student.Name }}" src="{{ student.Photo.url }}" id="pic">
+                        </div>
+                        <div class="k"><table border="1" width="100%" cellspacing="1" cellpadding="20" style="position:static;">
+                            <thead id="thea">
+                            <tr>
+                                <th style="text-align:center; width:100px;">REGISTER NUMBER</th>
+                                <th style="text-align:left;background-color:white;color:black;">{{ student.USN }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td id="t" style="text-align:center;background-color:cadetblue;color:white;"><span id="meenu">BRANCH</span></td>
+                                <td id="d" style="text-align:left;background-color:white;color:black;padding-left:10px;">{{ student.Branch.Name }} </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="k">
+                            <table border="1"  width="340px;" cellspacing="0" cellpadding="20" style="float:left;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:left">INTERESTED DOMAIN</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for stud,domainList in domains.items %}
+                                    {% if stud is student %}
+                                        {% for domain in domainList %}
+                                            <tr>
+                                                <td id="t"><span id="meenu">{{ domain.Name }}</span></td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <table border="1"  width="300px;" cellspacing="0" cellpadding="20" style="float:left;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:left">KNOWN LANGUAGES</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for stud,languageList in languages.items %}
+                                    {% if stud is student %}
+                                        {% for language in languageList %}
+                                            <tr>
+                                                <td id="t"><span id="meenu">{{ language.name }}</span></td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="k" style="padding-left:160px;">
+                            <table border="1"  width="90%;" cellspacing="0" cellpadding="20" style="float:left;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:left">SNIPPET OF CODE &nbsp;:</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td id="t" style="height:auto;padding-top:13px;padding-right:0px;padding-left:30px;width:680px;">
+                                        {% for stud,data in research.items %}
+                                            {% if stud is student %}
+                                                <textarea style="width:559px;height:100px; border:1px solid #ccc;">{{ data.Code }}
+                                                </textarea>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    {% endif %}
+                    </div>
+                    <p></p>
+                {% endfor %}
+               <!-- <div id="flip1">
+                    <h4 style="float:left;">Sharada</h4>
+                    <h4 style="color:white;float:center;">III year</h4>
+                    <h4 style="float:right;">99</h4>
+                </div>
+                <div id="panel1" style="display:none;">
+                    <div class="j">
+                        <img alt="Schlar" src="WebDev.jpg" id="pic">
+
+                    </div>
+                    <div class="k">
+                        <table border="1" width="100%" cellspacing="1" cellpadding="20">
+                            <thead id="thea">
+                            <tr>
+                                <th style="text-align:center; width:100px;">REGISTER NUMBER</th>
+                                <th style="text-align:left;background-color:white;color:black;">15GAEI6037</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td id="t" style="text-align:center;background-color:cadetblue;color:white;"><span id="meenu">BRANCH</span></td>
+                                <td id="d" style="text-align:left;background-color:white;color:black;padding-left:10px;">Information Science (6th Sem) </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="k">
+                        <table border="1"  width="340px;" cellspacing="0" cellpadding="20" style="float:left;">
+                            <thead id="thea">
+                            <tr>
+                                <th style="text-align:left">INTERESTED DOMAIN</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td id="t"><span id="meenu">Wireless Sensor  Networks</span></td>
+                            </tr>
+                            <tr>
+                                <td id="t"><span id="meenu"> Data Mining</span></td>
+                            </tr>
+                            <tr>
+                                <td id="t"><span id="meenu">Artificial Intelligency</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table border="1"  width="300px;" cellspacing="0" cellpadding="20" style="float:left;">
+                            <thead id="thea">
+                            <tr>
+                                <th style="text-align:left">KNOWN LANGUAGES</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td id="t"><span id="meenu">Java</span></td>
+                            </tr>
+                            <tr>
+                                <td id="t"><span id="meenu">Python</span></td>
+                            </tr>
+                            <tr>
+                                <td id="t"><span id="meenu">C programming</span></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="k" style="padding-left:160px;">
+                        <table border="1"  width="90%;" cellspacing="0" cellpadding="20" style="float:left;">
+                            <thead id="thea">
+                            <tr>
+                                <th style="text-align:left">SNIPPET OF CODE &nbsp;:</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td id="t" style="height:auto;padding-top:13px;padding-right:0px;padding-left:30px;width:680px;">
+                                    <textarea style="width:559px;height:100px; border:1px solid #ccc;">
+                                    </textarea></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div  style="clear:both;padding-right:530px;">
+                        <button style="height:40px;width:100px;color:white;background-color:cadetblue;" onclick="alert('hiiii')">APPROVE</button>
+                    </div>
+                </div>
+            </div><br>-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

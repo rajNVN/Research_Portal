@@ -1,0 +1,165 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'scholar_student.css' %}">
+    <style>
+       input[type=text]
+        {
+            width: 100px;
+            height: 40px;
+            border: 1px solid silver;
+            outline: none;
+            padding: 5px;
+        }
+</style>  
+        
+    <script>
+     function toggleSidebar(){
+         document.getElementById("sidebar").classList.toggle('active');
+     }  
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+    
+    $(document).ready(function(){
+    
+    $("#flip").click(function(){
+        $("#panel").slideToggle("slow");    
+    });
+        });
+        
+    $(document).ready(function(){
+    
+    $("#flip1").click(function(){
+        $("#panel1").slideToggle("slow");    
+    });
+        });
+    $(document).ready(function(){
+    
+    $("#flip2").click(function(){
+        $("#panel2").slideToggle("slow");    
+    });
+        });
+        
+    $(document).ready(function(){
+    
+    $("#flip4").click(function(){
+        $("#panel4").slideToggle("slow");    
+    });
+        });
+    </script>
+    
+</head>
+<body>
+    <div class="run">
+        <nav class="nav">
+            <div class="nav-mobile">
+                <ul class="left">
+                     <li class="last"><a href="/logout/"><i class="fa fa-sign-out"></i>LOGOUT</a></li>
+                     <li>&nbsp;&nbsp;</li>
+                     <li class="last"><a href="#" class="4"><i class="fa fa-envelope"></i>ABOUT</a></li>
+                   <li class="las" style="float:left; margin-left:0px;"><i class="fa fa-user"></i> &nbsp;HELLOW SCHOLAR &nbsp;&nbsp;</li>
+                
+                
+                </ul>
+                
+            </div>
+        
+        </nav>
+    </div>
+    <div id="sidebar">
+        <div class="toggle-button" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+        <ul class="one">
+                <li> <a href="/scholars/home/"><i class="fa fa-home"></i>HOME</a></li>
+                <li> <a href="/scholars/paper/"><i class="fa fa-user"></i>PAPER</a></li>
+                <li><a href="/scholars/student/" id="super" ><i class="fa fa-user"></i>STUDENT</a></li>
+            
+        </ul>
+    </div>
+    <div class="mainBody" >
+        <h2>Welcome GuideName</h2><br>
+        <div class="main">
+              <div class="ma">
+               <p><font size=+1>Students who have requested to do Research Under Phd Scholars</font></p> 
+            </div><br>
+ <div class="main1">
+      {% for student in students %}
+    <div style=" width : 103%; float : center;" id="m">
+        <div id="flip">
+            <h4 style="float:left;">{{ student.Name }}</h4>
+            <h4 style="float:center">{{ student.Year }}</h4>
+            <h4 style="float:right">{{ student.DOB }}</h4>
+        </div>
+        <div id="panel" style="display:none;">
+            <div class="j">
+            <img alt="Schlar" src="WebDev.jpg" id="pic">
+            </div>
+           <div class="l">
+
+        </div>
+    </div><br>
+    </div>
+     {% endfor %}
+
+
+
+     <div style=" width : 100%; float:center;" id="m">
+        <div id="flip1">
+            <h4 style="float:left;">Sharada</h4>
+            <h4 style="float:center;">YEAR</h4>
+            <h4 style="float:right;">COUNT</h4>
+        </div>
+        <div id="panel1" style="display:none;">
+            <div class="j">
+            <img alt="Schlar" src="WebDev.jpg" id="pic">
+            </div>
+           
+        </div>    
+    </div><br>
+     <div style=" width : 100%; float : center;" id="m">
+        <div id="flip2">
+            <h4 style="float:left;">Meenu</h4>
+            <h4 style="float:center;">YEAR</h4>
+            <h4 style="float:right;">COUNT</h4>
+        </div>
+        <div id="panel2" style="display:none;">
+            <div class="j">
+            <img alt="Schlar" src="meenu.jpg" id="pic">
+            </div>
+            <div class="j" style="color:black;float:left;position:relative;left:40px;">
+                <form >
+            <input type="text" name="USN" value="15GAEI6037" id="form">
+                </form>
+            
+            </div>
+          
+        </div>    
+    </div><br>
+     <div style=" width : 100%; float : center;" id="m">
+        <div id="flip4">
+            <h4 style="float:left;">Poornima</h4>
+           <h4 style="float:center;">YEAR</h4>
+            <h4 style="float:right;">COUNT</h4>
+        </div>
+        <div id="panel4" style="display:none;">
+            <div class="j">
+            <img alt="Schlar" src="WebDev.jpg" id="pic">
+            </div>
+            
+            
+               
+        </div>    
+    </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

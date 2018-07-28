@@ -1,0 +1,194 @@
+{% load staticfiles %}
+<html>
+<head>
+<title>AddStudentsIn scholarsPage</title> 
+    <style>
+        body{
+            background: url({% static 'images/WebDev.jpg' %}) fixed;
+        }
+        #thea{
+            width: 1350px;
+            background-color: black;
+            color:white;
+            padding: 10px;
+            
+        }       
+        .main1{
+        padding-left: 100px;
+        }
+        table{
+            background-color: #ccc;
+          
+            empty-cells: show;
+            
+        }
+        th,tr,td{
+            border: 1px solid white;
+            empty-cells: hide;
+        }
+        .main{
+            text-align: center;
+            position: relative;
+           
+        }
+        #but{
+            border: 2px solid #666;
+            width: 80px;
+            color:blue;
+            height: 35px;
+            cursor: pointer;
+            outline: none;
+        }
+        #but:focus
+        {
+            border:3px solid darkgreen;
+        }
+    </style>
+            <style>
+               .fr {
+            padding-left: 15px;
+        }
+
+        input[type=text],input[type=password],#country{
+            width: 450px;
+            border: 2px solid #aaa;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 17px;
+            box-sizing: border-box;
+
+        }
+        input[type=text]:focus {
+            border-color: green;
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            /* Fallback color */
+            background-color: rgba(0,0,0,0.7);/*rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .close {
+            color: grey;
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #form-wrapper {
+            padding: 10px;
+            width: 500px; /* Set this to your convenience */
+            height: 300px; /* Set this to your convenience */
+            position: absolute;
+            top: 230px;
+            left: 40%;
+            margin-top: -60px; /* Half of height */
+            margin-left: -100px;
+            background-color: whitesmoke;
+            border: 2px solid silver;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            border: 1px solid black
+        }
+
+        input[type=submit]
+        {
+            border: 1px solid silver;
+            height: 50px;
+            width: 150px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<script>
+    function go(usn) {
+        document.getElementById('myModal').style.display = 'block';
+        document.getElementById('usn').value = usn;
+    }
+</script>
+<body>
+  <div class="main"s style="width:100%; height:100%;">
+      <br>
+      <font size=+2><p style="text-align:left;padding-left:100px;color:blue">HERE IS YOUR RESULTS,ALL THE BEST</p></font>
+    <div class="main1">
+       <table border="0" cellspacing="0" width="94%" cellpadding="14">
+       <thead id="thea">
+           <td width="15%">REGISTER NUMBER</td>
+           <td width="17%">NAME</td>
+            <td width="20%">GUIDE ALLOTED</td>
+           <td width="20%">DOMAIN</td>
+           <td>STATUS</td>
+           <td>ACTION</td>
+           
+       </thead>
+       <tbody>
+       {% for key,value in dd.items %}
+           <tr>
+           {% if value is not -1 %}
+        <td>{{ key.USN }}</td>
+        <td>{{ key.Name }}</td>
+        <td>{{ value.Guide.Name }} </td>
+        <td>{{ value.Group.Name }}</td>
+        <td><img src="{% static 'images/right.jpg' %}" width="50px" height="50"></td>
+               <td><button id="but" onclick="go('{{ key.USN }}')">GO</button> </td>
+               {% else %}
+        <td>{{ key.USN }}</td>
+        <td>{{ key.Name }}</td>
+               <td style="">-</td>
+               <td>-</td>
+               <td><img src="{% static 'images/wrong.jpg' %}" width="50px" height="50"></td>
+               {% endif %}
+        </tr>
+       {% endfor %}
+       </tbody>
+    </table> 
+      
+      
+      </div>
+  <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content" >
+                <div id="form-wrapper" style="height: auto;">
+                    <span class="close" onclick="document.getElementById('myModal').style.display = 'none';">&times;</span>
+                    <form class="fr" action="/scholars/admit/" method="post">{% csrf_token %}
+                        <br><br>
+                        <label for="fname"><font face="Comic Sans MS" size=+1>ENTER YOUR PREVIOUS EXAMINATION REGISTER NUMBER:</font></label><br>
+                        <input type="text" name="usn" id="usn"  value="{{ usn }}" placeholder="YOUR REGISTER NUMBER" readonly="readonly">
+                        <br>
+                        <label for="lname"><font face="Comic Sans MS " size=+1>PASSWORD:</font></label><br>
+                        <input type="password" name="pwd" placeholder="password">
+                        <br>
+                        <input type="submit" value="SUBMIT" id="subject" style="background-color:green;">
+                        {% if error %}
+                            <font size="+2"> <mark>{{ error }}</mark> </font>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+  {% if error %}
+      <script>
+            document.getElementById('myModal').style.display = 'block';
+      </script>
+  {% endif %}
+  </div>
+    
+    
+</body>
+</html>

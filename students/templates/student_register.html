@@ -1,0 +1,298 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link  rel="stylesheet" href='{% static "student_register.css" %}'>
+    <style>
+        .nav {
+            background-color: cadetblue;
+            color: white;
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            position: fixed;
+            border-bottom: 1px solid silver;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            display: block;
+            line-height: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+        }
+        .a{
+            padding: 18px;
+            font-size: 24px;
+            width: 253px;
+            left: 0px;
+            float: left;
+
+        }
+       .nav li {
+           float: right;
+           padding-right: 40px;
+       }
+       .nav li a {
+           padding-top: 10px;
+           font-size: 24px;
+       }
+        #sidebar {
+            top: 61px;
+            height: 100%;
+            left: 0px;
+            width: 150px;
+            background-color: cadetblue;
+            transition: all 600ms linear;
+            position: fixed;
+        }
+        #sidebar  .toggle-button {
+            position: absolute;
+            left: 155px;
+            top: 7px;
+        }
+        #sidebar .toggle-button span {
+            display: block;
+            width: 30px;
+            height: 5px;
+            background: #151719;
+            margin: 3px 0px;
+            background-color: black;
+        }
+        #sidebar.active {
+            left: -149px;
+        }
+        #sidebar ul li {
+            display: block;
+        }
+        #sidebar li {
+            display: block;
+            line-height: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            height: 60px;
+        }
+        .one{
+            padding-left: 10px;
+        }
+       .mainbody {
+           padding-left: 250px;
+           padding-top: 100px;
+           background-color: aliceblue;
+           height: 500px;
+       }
+        .main {
+            background-color: white;
+            width: 1000px;
+            height: 500px;
+            position: relative;
+        }
+        .n {
+            width: 1000px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid silver;
+        }
+        .forum {
+            text-align: left;
+        }
+        textarea {
+            width: 900px;
+            height: 200px;
+            border: 2px solid #aaa;
+            outline: none;
+        }
+        textarea:focus {
+            border: 2px solid cadetblue;
+        }
+        .amma {
+            left: 0px;
+            position: relative;
+            padding: 10px;
+        }
+        .k a {
+            width: 220px;
+            height: 50px;
+            font-size: 23px;
+            color: cadetblue;
+            position: static;
+            display: block;
+            float: left;
+        }
+    </style>
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle('active');
+        }
+        $('#add').keypress(function(event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                var s = $(this).val();
+                $(this).val(s+"\n");
+            }
+        });​
+    </script>
+</head>
+    <body>
+    {% if registered %}
+            <script>alert('itseems aready registered, you can view just your details,its one time process only!');
+            window.location="http://{{ ip }}:8000/";</script>
+            {% else %}
+        {% if message %}
+            <script>alert('{{ message }}');</script>
+            {% endif %}
+        <div>
+            <nav class="nav">
+                <div class="a">Research Portal,UVCE</div>
+                <ul>
+                    <li><a href='/'>Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="sidebar">
+             <div class="toggle-button" onclick="toggleSidebar()">
+                 <span></span>
+                 <span></span>
+                 <span></span>
+             </div>
+            <ul class="one">
+                <li><a href="#" style="font-size:20px;"><i class="fa fa-user"></i>&nbsp;PROFILE</a></li>
+            </ul>    
+        </div>
+        <div class="mainbody">
+            <div class="main">
+                <nav class="n">
+                    <ul class="b">
+                        <div class="k">
+                            <li><a href="#" onclick="document.getElementById('t1').style.display='block';document.getElementById('t2').style.display='none';document.getElementById('t3').style.display='none';document.getElementById('t4').style.display='none';document.getElementById('t5').style.display='block';">Personal Details</a></li>
+                        </div>
+                        <div class="k">
+                            <li><a href="#" onclick="document.getElementById('t1').style.display='none';document.getElementById('t2').style.display='block';document.getElementById('t3').style.display='none';document.getElementById('t4').style.display='none';document.getElementById('t5').style.display='block';">Academic Details</a></li>
+                        </div>
+                         <div class="k">
+                            <li><a href="#" onclick="document.getElementById('t1').style.display='none';document.getElementById('t2').style.display='none';document.getElementById('t3').style.display='block';document.getElementById('t4').style.display='none';document.getElementById('t5').style.display='block';">Interest</a></li>
+                        </div>
+                         <div class="k">
+                            <li><a href="#" onclick="document.getElementById('t1').style.display='none';document.getElementById('t2').style.display='none';document.getElementById('t4').style.display='block';document.getElementById('t3').style.display='none';document.getElementById('t5').style.display='none';document.getElementById('t5').style.display='none';">Finalise</a></li>
+                        </div>
+                    </ul>
+                </nav>
+                <div class="ma" style="padding-top:20px;padding-bottom:10px;" id="t5">
+                    <div class="ma1">
+                        <img alt="{{ student.Name }}" src="{{ student.Photo.url }}" style="height:150px;width:170px; border-radius:100px;padding:6px;">
+                    </div>
+                    <div class="ma2">
+                        <p style="padding-left:20px; padding-top:20px;float:left">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{ student.Name }}</p>
+                        <p style="padding-left:20px; clear:both;">registernumber:&nbsp;{{ student.USN }}</p>
+                    </div>
+                </div>
+                <div class="j" id="t1" style="display: block;">
+                    <div class="m">
+                        <div class="ma3" style="left:20px;position:relative;">
+                            <span style="padding-left:20px;padding-top:20px; float:left;">Addresss&nbsp;&nbsp;&nbsp;&nbsp;: </span>
+                            <textarea style="height:70px;width:800px; border:1px solid cadetblue;border-radius:10px;padding:10px;margin-top:10px;">{{ student.Address }}</textarea>
+                        </div>
+                    </div>
+                    <div class="ma3" style="left:20px;position:relative;height:100px;">
+                        <p style="padding-left:20px;float:left;">Phone Number: {{ student.Mobile }}</p><br>
+                        <p style="padding-left:20px;clear:both;">Email_Id&nbsp;&nbsp;&nbsp;&nbsp;: {{ student.Email }}</p>
+                    </div>
+                </div>
+                <div class="ma3" style="left:20px;position:relative;height:100px; display: none;" id="t2">
+                    <p style="padding-left:20px;float:left;">Year&nbsp;&nbsp;&nbsp;: {{ student.Year }}</p><br>
+                    <p style="padding-left:20px;clear:both;">Branch&nbsp;: {{ student.Branch.Name }}</p>
+                    <p style="padding-left:20px;float:left;">date Of joining: {{ student.Year }}</p><br>
+                    <p style="padding-left:20px;clear:both;">Aggregate: {{ student.Aggregate }}</p>
+                </div>
+                <form class="forum" action="/students/add/" method="post">{% csrf_token %}
+                    <input type="text" name='reg' value='{{ student.USN }}' style="display: none;">
+                    <div id="t3" style="left:60px;display:none;position:relative;" class="ma3">
+                        <div class="f">
+                            <div class="amma">
+
+                                <div style="width:350px; padding-left:40px; float:left;">
+                                    <font size=+1>
+                                        <p style="color:black">CHOOSE YOUR FIELD OF INTERESTS&nbsp;:</p></font>
+                                    <font size=+1 style="opacity:0.8">DOMAIN1&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</font>
+                                    <select id="sel" name="guide1">
+                                        {% for dom in domain %}
+                                            <option value="{{ dom.pk }}">{{ dom.Name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br><br>
+                                    <font size=+1 style="color:black;opacity:0.7"> DOMAIN2&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</font>
+                                    <select id="sel" name="guide2">
+                                        {% for dom in domain %}
+                                            <option value="{{ dom.pk }}">{{ dom.Name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br><br>
+                                    <font size=+1 style="color:black;opacity:0.7">DOMAIN3&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</font>
+                                    <select id="sel" name="guide3">
+                                        {% for dom in domain %}
+                                            <option value="{{ dom.pk }}">{{ dom.Name }}</option>
+                                        {% endfor %}
+                                    </select><br>
+                                </div>
+                                <div style="width:20px;"></div>
+                                <div class="s" style="float:left; width:330px;padding-left:40px;padding-bottom:20px;padding-right:10px;">
+                                    <font size=+1>  <p style="color:black">WHAT LANGUAGES DO YOU KNOW&nbsp;:</p></font>
+                                    <font size=+1 style="opacity:0.8">LANGUAGE 1&nbsp;:&nbsp;</font>
+                                    <select id="sel" name="language1">
+                                        {% for lang in language %}
+                                            <option value="{{ lang.pk }}" style="color: #5E5694">{{ lang.name }}</option>
+                                        {% endfor %}
+                                    </select><br><br>
+                                    <font size=+1 style="color:black;opacity:0.7"> LANGUAGE 2:&nbsp;&nbsp;</font>
+                                    <select id="sel" name="language2">
+                                        {% for lang in language %}
+                                            <option value="{{ lang.pk }}">{{ lang.name }}</option>
+                                        {% endfor %}
+                                    </select><br><br>
+                                    <font size=+1 style="color:black;opacity:0.7"> LANGUAGE 3 :&nbsp;</font>
+                                    <select id="sel" name="language3">
+                                        {% for lang in language %}
+                                            <option value="{{ lang.pk }}">{{ lang.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f" style="display:none;" id="t4">
+                        <div class="amma">
+                         <!--<div style="display: none;">
+                            <!-- <label style="font-size: 20px;">REGISTER NUMBER:</label>
+                             <input type="text" name="usn" value="{{ student.USN }}" readonly="readonly"
+                                    style=" font-size: 19px;padding-left:10px;height: 40px;width: 200px;"></div>-->
+                             <label style="font-size: 20px;">GITHUB LINK &nbsp;:</label>
+                              <input type="text" name="git" placeholder="GITHUB LINK" style="padding-left: 20px;border:2px solid silver;left: 100px;height: 50px;width: 700px;"><br><br>
+                                <label style=" font-size: 20px;padding-left:10px;height: 40px;width: 200px;">LANGUAGE&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                                <select id="sel" name="codeln" style="width: ;">
+                                        {% for lang in language %}
+                                            <option value="{{ lang.pk }}">{{ lang.name }}</option>
+                                        {% endfor %}
+                                    </select><br>
+                   <label style="font-size:23px;">&nbsp;<br>Write a snippet of code</label> <br><br>
+
+                        <textarea placeholder="Write your Code here" name="codesnippet" style="height: 250px;" required></textarea><br><br>
+                          <input type="submit"/>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+        </div>
+    {% if message %}
+        <script>document.getElementById('t4').style.display = 'none';
+        document.getElementById('t3').style.display = 'block';
+        document.getElementById('t2').style.display = 'none';
+        document.getElementById('t1').style.display = 'none';</script>
+    {% endif %}
+    </body>
+</html>

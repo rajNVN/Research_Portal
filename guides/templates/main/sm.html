@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<a href="/consellise/">update result</a>
+
+<!-- Container -->
+<div id="dateset" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div id="form-wrapper">
+                        <span class="close" onclick="document.getElementById('dateset').style.display = 'none';">&times;</span>
+                        <form class="fr" action="/scholars/assignStudent/" method="post">{% csrf_token %}
+                            <br><br>
+                            Start Date : <input type="text" id="title"><br>
+                            End Date : <input type="text" id="title"  ><br>
+                            <input type="text" id="scholar" name="scholar" style="display: none;" value="{{ scholar.USN }}">
+                            {% if stud|length == 0 %}
+                                 but sry  No students available to add
+                                {% else %}
+                                student
+                            <select name="usn">
+                                {% for studen in stud %}
+                                        <option value="{{ studen.USN }}">{{ studen.Name }}</option>
+                                {% endfor %}
+                            </select>
+                                <br><br>
+                            <input type="submit" value="OK" id="subject" style="background-color:green;">
+                            <br><br>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>

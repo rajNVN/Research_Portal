@@ -1,0 +1,361 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'scholar_paper.css' %}">
+
+    <style>
+        .main{
+            width: 95%;
+        }
+
+        body {
+            background: #666;
+            font-family: sans-serif;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .mainBody{
+            padding-left: 270px;
+            padding-top: 75px;
+        }
+
+        #sidebar{
+            top: 60px;
+            position: fixed;
+            width: 200px;
+            height: 100%;
+            min-width: 200px;
+            background: #151617;
+            left: 0px;
+            transition: all  600ms linear;
+        }
+        #sidebar ul li{
+            color: rgba(230,230,230,0.9);
+            list-style:none;
+            display: block;
+            margin-top: 0px;
+            margin-bottom: inherit;
+            margin-left: 0px;
+            margin-right: 0px;
+            padding: inherit;
+            border-bottom: 2px solid rgba(100,100,100,0.3);
+        }
+        #sidebar  .toggle-button{
+            position: absolute;
+            left: 230px;
+            top: 20px;
+
+        }
+        #sidebar.active{
+            left: -200px;
+        }
+
+        #sidebar .toggle-button span{
+            display: block;
+            width: 30px;
+            height: 5px;
+            background: #151719;
+            margin: 3px 0px;
+        }
+
+        *{
+            border: 0;
+            margin: 0;
+            padding: 0;
+            outline: 0;
+        }
+        h2{
+            color: white;
+        }
+        .nav{
+            background: black;
+            height: 60px;
+            width: 1350px;
+            position: fixed;
+        }
+        .nav .left li a{
+             display: block;
+            padding: 22px;
+            line-height: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+        }
+        ul{
+            list-style: none;
+
+        }
+        .nav .left li{
+            float: right;
+        }
+
+        #sidebar a {
+            display: block;
+            padding: 35px;
+            line-height: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+        }
+
+        .nav .left a:hover {
+            background: whitesmoke;
+            color: black;
+        }
+
+        #sidebar .one li a:hover{
+            background: whitesmoke;
+            color: black;
+
+        }
+
+        .nav li.last {
+            float: right;
+            padding: 0px;
+
+        }
+
+        .nav .las {
+            float: left;
+            display: block;
+            padding: 27px;
+            line-height: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+
+        }
+
+        #sidebar .one #super {
+            background-color: whitesmoke;
+            color: black;
+        }
+
+        .fr {
+            padding-left: 15px;
+        }
+
+        input[type=text],#country{
+            width: 450px;
+            border: 2px solid #aaa;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 17px;
+            box-sizing: border-box;
+
+        }
+        input[type=text]:focus {
+            border-color: green;
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            /* Fallback color */
+            background-color: rgba(0,0,0,0.7);/*rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .close {
+            color: grey;
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #form-wrapper {
+            padding: 10px;
+            width: 500px; /* Set this to your convenience */
+            height: 300px; /* Set this to your convenience */
+            position: absolute;
+            top: 230px;
+            left: 40%;
+            margin-top: -60px; /* Half of height */
+            margin-left: -100px;
+            background-color: whitesmoke;
+            border: 2px solid silver;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            border: 1px solid black
+        }
+
+        input[type=submit]
+        {
+            border: 1px solid silver;
+            height: 50px;
+            width: 150px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle('active');
+        }
+    </script>
+    <script type="text/javascript">
+        function dis()
+        {
+            var modal=document.getElementById('myModal');
+            modal.style.display = "block";
+        }
+        function dis2()
+            {
+                 var modal=document.getElementById('myModal');
+                modal.style.display="none";
+                document.getElementById('myModal1').style.display = 'none';
+            }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function assignStudent(number, title, usn)
+        {
+            id = number+"+"+title;
+            document.getElementById(id).style.display='block';
+            document.getElementById('paper_id').value = number;
+            document.getElementById('title').value = title;
+            document.getElementById('scholar').value = usn;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <nav class="nav">
+            <div class="nav-mobile">
+                <ul class="left">
+                     <li class="last"><a href="/logout/"><i class="fa fa-sign-out"></i>LOGOUT</a></li>
+                     <li>&nbsp;&nbsp;</li>
+                     <li class="last"><a href="#" class="4"><i class="fa fa-envelope"></i>ABOUT</a></li>
+                    <li class="las" style="float:left; margin-left:0px;"><i class="fa fa-user"></i><font face="Comic Sans MS">&nbsp;HELLOW SCHOLAR</font>&nbsp;&nbsp;</li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="sidebar">
+        <div class="toggle-button" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+        <ul class="one">
+                <li> <a href="/scholars/home/"><i class="fa fa-home"></i>HOME</a></li>
+                <li> <a href="/scholars/paper/" id="super" ><i class="fa fa-book"></i>PAPER</a></li>
+                <li><a href="/scholars/student/"><i class="fa fa-user"></i>STUDENT</a></li>
+        </ul>
+    </div>
+    <div class="mainBody" >
+        <h2>Welcome {{ scholar.Name }}</h2><br>
+        <div class="main"><br>
+            <table border="1" width="100%" cellspacing="1" cellpadding="20">
+                <!--<caption style="padding:20px;border:1px solid;"><font size=+2>Research Papers Currently working on and students assigned to it</font></caption>
+      -->          <thead id="thea">
+                    <tr>
+                        <th>PAPER_TITLE</th>
+                        <th>STUDENT1</th>
+                        <th>STUDENT2</th>
+                        <th>STUDENT3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+                {% for paper,students in papers.items %}
+                    <tr>
+                        <td id="t"><span id="meenu">{{ paper.Title }}</span></td>
+                        {% for student in students %}
+                            <td id="d"><br>{{ student.Name }}<br>({{ student.USN }})<br></td>
+                        {% endfor %}
+                        {% if students|length < 1 %}
+                            <td id="d"><br><a href="#" onclick="assignStudent('{{ paper.Number }}','{{ paper.Title }}','{{ scholar.USN }}')" style="text-decoration:none;">Add a student</a><br><br></td>
+                            <td id="d"><br><a href="#" onclick="assignStudent('{{ paper.Number }}','{{ paper.Title }}','{{ scholar.USN }}')" style="text-decoration:none;">Add a student</a><br><br></td>
+                            <td id="d"><br><a href="#" onclick="assignStudent('{{ paper.Number }}','{{ paper.Title }}','{{ scholar.USN }}')" style="text-decoration:none;">Add a student</a><br><br></td>
+                        {% elif students|length < 2 %}
+                           <td id="d"><br><a href="#" onclick="assignStudent('{{ paper.Number }}','{{ paper.Title }}','{{ scholar.USN }}')" style="text-decoration:none;">Add a student</a><br><br></td>
+                            <td id="d"><br><a href="#" onclick="assignStudent('{{ paper.Number }}','{{ paper.Title }}','{{ scholar.USN }}')" style="text-decoration:none;">Add a student</a><br><br></td>
+                        {% elif students|length < 3 %}
+                            <td id="d"><a href="#" onclick="assignStudent('{{ paper.Number }}','{{ paper.Title }}','{{ scholar.USN }}')" style="text-decoration:none;">Add a student</a></td>
+                        {% endif %}
+                    </tr>
+                    <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
+                {% endfor %}
+                {% if pcount < 5 %}
+                    <tr>
+                        <td style="width: inherit">You added only {{ pcount }} papers : <a href="#" onclick="dis()">we suggest you to add Paper</a> </td>
+                    </tr>
+                {% endif %}
+                    <!--<tr>
+                         <td id="t"><span id="meenu"> Data Mining</span></td>
+                        <td id="d"><br>Vanitha Babu Marathi<br>(15GAEI6037)<br></td>
+                        <td id="d">Meenu<br>(16GAEI6032)</td>
+                        <td id="d">Satish<br>(14GAEI6037)</td>
+                    </tr>-->
+                </tbody>
+            </table>
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div id="form-wrapper">
+                        <span class="close" onclick="dis2()">&times;</span>
+                        <form class="fr" action="/scholars/addPaper/" method="post">{% csrf_token %}<br><br>
+                            <!--<label for="PAPERTITLE"><font size=+1>RESEARCH TITLE</font></label><br>-->
+                            <input type="text" name="usn" value="{{ scholar.USN }}" style="display: none">
+                            <input type="text" id="lname" name="title" placeholder="TITLE OF THE RESEARCH PAPER"><br><br>
+                            <input type="file" name="pdf"><br><br>
+                            <input type="submit" value="SUBMIT" id="subject" style="background-color:green;">&nbsp;&nbsp;&nbsp;&nbsp;
+                            <br><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% for paper,stud in pstudent.items %}
+            <div id="{{ paper.Number }}+{{ paper.Title }}" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div id="form-wrapper">
+                        <span class="close" onclick="document.getElementById('{{ paper.Number }}+{{ paper.Title }}').style.display = 'none';">&times;</span>
+                        <form class="fr" action="/scholars/assignStudent/" method="post">{% csrf_token %}
+                            <br><br>
+                            <input type="text" id="paper_id" name="number" value="{{ paper.Number }}" style="display: none;">
+                            You have selected <input type="text" id="title" value="{{ paper.Title }}" disabled="disabled"><br>
+                            paper for :
+                            <input type="text" id="scholar" name="scholar" style="display: none;" value="{{ scholar.USN }}">
+                            {% if stud|length == 0 %}
+                                 but sry  No students available to add
+                                {% else %}
+                                student
+                            <select name="usn">
+                                {% for studen in stud %}
+                                        <option value="{{ studen.USN }}">{{ studen.Name }}</option>
+                                {% endfor %}
+                            </select>
+                                <br><br>
+                            <input type="submit" value="OK" id="subject" style="background-color:green;">
+                            <br><br>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

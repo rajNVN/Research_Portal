@@ -1,0 +1,134 @@
+{% load staticfiles %}
+<html>
+<head>         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{% static 'scholars_register.css' %}">
+    <style type="text/css">
+        body {
+            background: url({% static 'images/Website-Design-Background.png' %}) fixed;
+            height: 90%;
+            padding: inherit;
+            align-content: center;
+            background-size: 100% 700px;
+        }
+    </style>
+</head>
+    <body>
+        <font size=+3><p>HELLO {{ usr.Name }} </p></font>
+        
+    <div class="main" style="width:800px;margin:0 auto;margin-top:7px;">
+    {% if message %}
+        <script>alert("{{ message }}");</script>
+    {% endif %}
+        <font size=+2> <p id="2" style="text-align:center;color:black;" >FILL  UP THE GIVEN FORM</p></font>
+        <form class="form-input" action="/addCounsel/" method="post">{% csrf_token %}
+            <div class="InputIcon">
+                <input type="text" name="usr" id="button" placeholder="userId" value="{{ usr.USN }}" readonly="readonly" required>
+                <br>
+                <i class="fa fa-user fa-lg fa-fw" aria-hidden="True"></i>
+            </div>
+            <div class="InputIcon">
+                <input type="text" name="flname" id="button" placeholder="YOUR FIRST NAME" value="{{ usr.Name }}"readonly="readonly" required>
+                <br>
+                <i class="fa fa-user fa-lg fa-fw" aria-hidden="True"></i>
+            </div>
+
+        <div class="InputIcon">
+            <input type="text" name="dob" id="button" placeholder="DATE OF BIRTH" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="required format : YYYY-MM-DD example : 1998-08-31">
+            <br>
+             <i class="fa fa-calendar fa-lg fa-fw" aria-hidden="True"></i>
+        </div>
+        <div class="InputIcon">   
+            <input type="text" name="cog" id="button" placeholder="COLLEGE OF PREVIOUS DEGREE" required><br>
+            <i class="fa fa-university fa-lg fa-fw" aria-hidden="True"></i>
+        </div>
+        <div class="InputIcon">
+            <input type="text" name="rank" id="button" placeholder="OBTAINED RANK" value="{{ usr.Rank }}" required><br>
+            <i class="fa fa-star fa-lg fa-fw" aria-hidden="True"></i>
+        </div>
+
+            <font size=+1>  <p style="color:black">CHOOSE YOUR FIELD OF INTERESTS&nbsp;:</p></font>
+        <font size=+1 style="opacity:0.8">DOMAIN1&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</font>
+        <select id="sel" name="group1">
+            {% for foo in domain %}
+                <option value="{{ foo.pk }}">{{ foo.Name }}</option>
+            {% endfor %}
+                <!--<option>CLOAD COMPUTING</option>
+                <option>MACHINE LEARNING</option>
+                <option>ARTIFICIAL INTELLIGENCY</option>
+                <option>DATA MINING</option>
+                <option>IMAGE PROCESSING</option>
+                <option>INFORMATION RETRIEVAL</option>-->
+        </select>
+            <br><br>
+        <font size=+1 style="color:black;opacity:0.7"> DOMAIN2&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</font>
+        <select id="sel" name="group2">
+               {% for foo in domain %}
+                <option value="{{ foo.pk }}">{{ foo.Name }}</option>
+            {% endfor %}
+        </select><br><br>
+            <font size=+1 style="color:black;opacity:0.7">DOMAIN3&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</font> 
+        <select id="sel" name="group3">
+              {% for foo in domain %}
+                <option value="{{ foo.pk }}">{{ foo.Name }}</option>
+            {% endfor %}
+        </select><br>&nbsp;&nbsp;&nbsp;&nbsp;
+           <font size=+1>  <p style="color:black">CHOOSE YOUR GUIDE&nbsp;:</p></font>
+        <font size=+1 style="opacity:0.8">GUIDE1&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</font>
+        <select id="sel" name="guide1">
+            {% for g in guide %}
+                <option value="{{ g.USN }}">{{ g.Name }}</option>
+            {% endfor %}
+        <!--
+                <option>CHAMPA</option>
+                <option>TRIVENI </option>
+                <option>PUSHPA</option>
+                <option>TANUJA</option>
+                <option>LATHA B T</option>
+                <option>KIRAN K</option>
+                <option>VENKATESH R</option>
+                <option>DARMENDRA CHOUHAN</option>
+                <option>DILIP</option>
+                <option>VIMALA</option>-->
+        </select>
+            <br><br>
+        <font size=+1 style="color:black;opacity:0.7"> GUIDE2&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</font> 
+        <select id="sel" name="guide2">
+               {% for g in guide %}
+                <option value="{{ g.USN }}">{{ g.Name }}</option>
+            {% endfor %}
+               
+        </select><br><br>
+            <font size=+1 style="color:black;opacity:0.7">GUIDE3&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</font> 
+        <select id="sel" name="guide3">
+                {% for g in guide %}
+                <option value="{{ g.USN }}">{{ g.Name }}</option>
+            {% endfor %}
+        </select><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;   
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa fa-sign-out"></i>
+        <input type="submit" name="submit" value="SUBMIT" id="ma" onclick="funct();"> 
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="reset" name="reset" value="RESET" id="ma1" style="right:0px;background-color:#ccc;">&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" name="go" value="GO"  id="m" style="background-color:lightgreen;">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+<script>
+    
+    $('#m').click(function()
+                     {
+       swal("Good! You have succesfully submitted!", "We will get back to you on 10/06/2018", "success");
+
+        
+    })
+</script>
+            <!--<br><br><i class="fa fa-sign-out"></i>
+           <a  href="addscholars3.html">
+            <input type="button" id="ma" value="GO" onclick="addscholars3.html" style="width:360px;padding:20px;background-color:skyblue;">
+            </a> -->
+        
+        </form>
+        </div>
+    </body>
+</html>

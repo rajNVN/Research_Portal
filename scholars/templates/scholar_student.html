@@ -1,0 +1,351 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'guide_student.css' %}">
+    <style>
+       input[type=text]
+        {
+            width: 100px;
+            height: 40px;
+            border: 1px solid silver;
+            outline: none;
+            padding: 5px;
+        }
+         #sel{
+            width: 490px;
+            padding: 12px;
+            border-radius: 5px;
+            border-color: black;
+            outline: none;
+        }
+        #sel:focus{
+            border-color: green;
+        }
+         .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            /* Fallback color */
+            background-color: rgba(0,0,0,0.7);/*rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .fr {
+            padding-left: 15px;
+        }
+
+        input[type=text],#country{
+            width: 450px;
+            border: 2px solid #aaa;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 17px;
+            box-sizing: border-box;
+
+        }
+        input[type=text]:focus {
+            border-color: green;
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            /* Fallback color */
+            background-color: rgba(0,0,0,0.7);/*rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .close {
+            color: grey;
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #form-wrapper {
+            padding: 10px;
+            width: 500px; /* Set this to your convenience */
+            height: 300px; /* Set this to your convenience */
+            position: absolute;
+            top: 230px;
+            left: 40%;
+            margin-top: -60px; /* Half of height */
+            margin-left: -100px;
+            background-color: whitesmoke;
+            border: 2px solid silver;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            border: 1px solid black
+        }
+
+        input[type=submit]
+        {
+            border: 1px solid silver;
+            height: 50px;
+            width: 150px;
+            cursor: pointer;
+        }
+</style>  
+        
+    <script>
+     function toggleSidebar(){
+         document.getElementById("sidebar").classList.toggle('active');
+     }  
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        {% for student in students %}
+            $(document).ready(function(){
+                $("#flip{{ forloop.counter }}").click(function(){
+                    $("#panel{{ forloop.counter }}").slideToggle("slow");
+                });
+            });
+        {% endfor %}
+    function dis2() {
+        document.getElementById('myModal1').style.display = 'none';
+    }
+
+    function dis(usn,name) {
+        document.getElementById('myModal1').style.display = 'block';
+        document.getElementById('paper_id').value = document.getElementById('sel').value;
+        document.getElementById('pname').value = document.getElementById('sel').options[document.getElementById('sel').selectedIndex].text;;
+        document.getElementById('usn').value = usn;
+        document.getElementById('student').value = name;
+    }
+    </script>
+<style type="text/css">
+        {% for scholar in students %}
+             #panel{{ forloop.counter }}, #flip{{ forloop.counter }}{
+    padding: 20px;
+    width: 930px;
+    border-radius: 5px;
+    text-align: center;
+    background-color:#aaa;
+    border: solid 1px #c3c3c3;
+    color: white;
+    font-size: large;
+    position: inherit;
+}
+        #flip{{ forloop.counter }}{
+            height: 25px;
+            position: inherit;
+
+        }
+
+#panel{{ forloop.counter }} {
+    padding-left: 20px;
+    padding-right: 0px;
+    width: 98%;
+    float: left;
+    height: auto;
+    color: white;
+    background-color: #ccc;
+}
+        {% endfor %}
+    </style>
+    
+</head>
+<body>
+    <div class="run">
+        <nav class="nav">
+            <div class="nav-mobile">
+                <ul class="left">
+                     <li class="last"><a href="/"><i class="fa fa-sign-out"></i>LOGOUT</a></li>
+                     <li>&nbsp;&nbsp;</li>
+                     <li class="last"><a href="#" class="4"><i class="fa fa-envelope"></i>ABOUT</a></li>
+                   <li class="las" style="float:left; margin-left:0px;"><i class="fa fa-user"></i> &nbsp;HELLO {{ this.Name.upper }} &nbsp;&nbsp;</li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div id="sidebar">
+        <div class="toggle-button" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+        <ul class="one">
+                <li> <a href="/scholars/home/"><i class="fa fa-home"></i>HOME</a></li>
+                <li> <a href="/scholars/paper/"><i class="fa fa-user"></i>PAPER</a></li>
+                <li><a href="/scholars/student/" id="super" ><i class="fa fa-user"></i>STUDENT</a></li>
+        </ul>
+    </div>
+    <div id="myModal1" class="modal" style="display:none;">
+                <!-- Modal content -->
+        <div class="modal-content">
+            <div id="form-wrapper">
+                <span class="close" onclick="dis2()">&times;</span>
+                <form class="fr" action="/scholars/assignStudent/" method="post">{% csrf_token %}
+                    <br><br>
+                    <label>You have selected : Paper </label>
+                    <input type="text" id="paper_id" name="number" style="display: none">
+                    <input type="text" id="pname" disabled="disabled">
+                    <label> for Student </label>
+                    <input type="text" id="scholar" name="scholar" value="{{ this.USN }}" style="display: none;">
+                    <input type="text" id="usn" name="usn" value="usn" style="display: none;">
+                    <input type="text" id="student" disabled="disabled">
+                    <br><br>
+                    <input type="submit" value="SUBMIT" id="subject" style="background-color:green;">
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="mainBody" >
+        <h2>Welcome {{ this.Name }}</h2><br>
+        <div class="main">
+              <div class="ma">
+               <p><font size=+1>Students who have requested to do Research Under Phd Scholars</font></p> 
+            </div><br>
+            <div class="main1">
+                {% for student in students %}
+                    <div style=" width : 103%; float :center;" id="m">
+                    <div id="flip{{ forloop.counter }}">
+                        <h4 style="float:left;width:450px; text-align: left;">{{ student.Name }}</h4>
+                        <h4 style="float:left;">{{ student.Year }} year/{{ student.Course }} </h4>
+                        <h4 style="float:right;color: white; text-align: left ;">{% for star in stars|get_item:student %}
+                                <font size="+3"> {{ star }} {{ star }}</font>
+                            {% endfor %}
+                                </h4>
+                    </div>
+                    <div id="panel{{ forloop.counter }}" style="display:none;">
+                        <div class="k" style="width:500px; float:left;">
+                            <table border="1" width="100%" cellspacing="1" cellpadding="20" style="position:static;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:center; width:100px;">REGISTER NUMBER</th>
+                                    <th style="text-align:left;background-color:white;color:black;">{{ student.USN }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td id="t" style="text-align:center;background-color:cadetblue;color:white;"><span id="meenu">NAME</span></td>
+                                    <td id="d" style="text-align:left;background-color:white;color:black;padding-left:10px;">{{ student.Name }} </td>
+                                </tr>
+                                <tr>
+                                    <td id="t" style="text-align:center;background-color:cadetblue;color:white;"><span id="meenu">BRANCH</span></td>
+                                    <td id="d" style="text-align:left;background-color:white;color:black;padding-left:10px;">{{ student.Branch.Name }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <p></p>
+                            <table border="1"  width="280px;" cellspacing="0" cellpadding="20" style="float:left;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:left">INTERESTED DOMAIN</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for stud,domainList in domains.items %}
+                                    {% if stud is student %}
+                                        {% for domain in domainList %}
+                                            <tr>
+                                                <td id="t"><span id="meenu">{{ domain.Name }}</span></td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <table border="1"  width="219px;" cellspacing="0" cellpadding="20" style="float:left;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:left">KNOWN LANGUAGES</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for stud,languageList in languages.items %}
+                                    {% if stud is student %}
+                                        {% for language in languageList %}
+                                            <tr>
+                                                <td id="t"><span id="meenu">{{ language.name }}</span></td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="k">
+                            <table border="1"  width="400px;" cellspacing="0" cellpadding="20" style="float:left;height:200px;">
+                                <thead id="thea">
+                                <tr>
+                                    <th style="text-align:left">CODE SNIPPET</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td id="t" style="padding-top:8px; height:auto">
+                                        {% for stud,data in research.items %}
+                                            {% if stud is student %}
+                                                <textarea style="border:1px solid #aaa;border-bottom:2px solid cadetblue;border-right:2px solid cadetblue;height:130px;width:360px;" value="">{{ data.Code }}</textarea>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="k" style="float:left;color:white;background-color:cadetblue;width:400px;border:2px solid white;text-align:left; height:50px;border-bottom:none;" >
+                            OBTAINED RANK&nbsp;&nbsp;&nbsp;:&nbsp;{{ parcentage|get_item:student }}%
+                        </div>
+                        <div style="float:left;color:white;background-color:cadetblue;width:400px;border:1px solid white;text-align:left; height:50px;" class="k">
+                            STARS GIVEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<span style="font-size:40px;color:yellow">
+                            {% for star in stars|get_item:student %}
+                                {{ star }}
+                            {% endfor %}
+                        </span>
+                        </div>
+                        <div class="k" style="clear:both;float:left;">
+                            {% for stud,pap in papers.items %}
+                                {% if stud is student %}
+                                    {% if pap|length < 3 %}
+                                        <form action="#">
+                                            <span style="color:cadetblue;background-color:white;padding:10px;">ASSIGN PAPER:</span>&nbsp;&nbsp;
+                                            <select style="left:100px;border:2px solid gray;" id="sel">
+                                                {% for stud,npap in npapers.items %}
+                                                    {% if stud is student %}
+                                                        {% for npapr in npap %}
+                                                            <option value="{{ npapr.Number }}">{{ npapr.Title }}</option>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </select>&nbsp;&nbsp;&nbsp;
+                                            <button onclick="dis('{{ student.USN }}','{{ student.Name }}')" style="border:2px solid cadetblue;width:100px;height:40px;background-color:white;cursor:pointer;">SELECT</button>&nbsp;&nbsp;
+                                        </form>
+                                    {% else %}
+                                        <span style="color:cadetblue;background-color:white;padding:10px;">STUDENT AS BEEN ASSIGNED WITH MAXIMUM NO OF PAPERS so no papers can be assigned</span>&nbsp;&nbsp;
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div><br>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

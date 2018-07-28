@@ -1,0 +1,149 @@
+ body
+    {
+        background-image: url(bg12.jpg);
+        height: auto;
+        background-attachment: fixed;
+        padding: inherit;
+        align-content: center;
+        background-size: 100% 700px;
+    }
+
+       #main
+    {
+        widows: 300px;
+        height: auto;
+        background-color:white;
+         padding:60px;
+        box-shadow: 0 0 10px rgba(150,150,1);
+        opacity: 1;
+
+    }
+
+    .cent{
+        height: 60px;
+        width: 100px;
+        background-color: lavender;
+        padding: inherit;
+        opacity: 0.9;
+    }
+        .cent ul{
+        margin: 0;
+        padding: 0;
+
+    }
+    .cent li{
+        list-style-type: none;
+        float: left;
+        display: block;
+        height:60px;
+        width: 160px;
+        text-align: center;
+        line-height: 55px;
+        font-size: 25;
+
+    }
+    .cent li a{
+        text-decoration: none;
+        color:brown;
+        padding-top: 10px;
+    }
+        #h
+        {
+            color: darkblue;
+        }
+        #c{
+            color: black;
+        }
+
+#simple_form
+        {
+            text-align: center;
+            margin:0px 30px;
+            padding: 0px;
+            border-radius: 10px;
+
+        }
+        #registration{
+            width: 100%;
+            background-color:lavender;
+            padding: 30px 0px;
+            border-radius: 10px;
+        }
+        input[type=text],input[type=email],input[type=password],input[type=date]{
+            width: 400px;
+            border: 1px solid black;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 17px;
+            box-sizing: border-box;
+
+        }
+     /*input[type=text],input[type=email],input[type=password],input[type=date]:focus{
+             border-color: green;
+        }*/
+      /*  #button{
+            width: 300px;
+            padding: 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            outline: none;
+        }*/
+        #but1{
+            width: 150px;
+            border: 1px solid black;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 14px;
+            background-color: forestgreen;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        #but2{
+            width: 150px;
+           border: 1px solid black;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 14px;
+            box-sizing: border-box;
+            background-color:#ccc;
+            cursor: pointer;
+
+        }
+    #button1{
+        width: 300px;
+            padding: 10px;
+            border-radius: 5px;
+
+    }
+        #button:focus{
+       border: 2px solid green;
+        }
+        p{
+            text-align:left;
+            padding-left: 170px;
+
+        }
+      li  i{
+            color:lightslategray;
+        }
+        i{
+            color: #ccc;
+        }
+        .InputIcon input[type=text],input[type=email],input[type=password]{
+
+            padding-left: 40px;
+        }
+        .InputIcon{
+            position: relative;
+
+        }
+        .InputIcon i{
+            position: absolute;
+            left: 110px;
+            top: 10px;
+            padding: 15px 8px;
+        }

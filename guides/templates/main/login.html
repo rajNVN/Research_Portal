@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'login_scholar.css' %}">
+    </head>
+    <body style="background-image: url('{% static 'images/login-page-background-images-hd-9.jpg' %}');background-size: cover;"><br><br>
+    <div class="cent" style= "width:624.5px; margin:0 auto;top:30px;">
+        <ul>
+            <li><a href="#" id="c"><i class="fa fa-user"></i>&nbsp;&nbsp;LOGIN</a></li>
+        </ul>
+    </div>
+    <div id="main" style="width:503px; margin:0 auto;top:100px;">
+        <div id="simple_form">
+            <form id="registration" action="/login/" method="post">{% csrf_token %}<br><br><br>
+                <div class="InputIcon">
+                    <input type="radio" name="type" value="s" checked>
+                    <label for="type"  style="margin-right: 80px;"><span style="font-size: 22px;">I am a Scholar</span></label>
+                    <input type="radio" name="type" value="g"><span style="font-size: 22px;">I am a guide</span>
+                </div>
+                <div class="InputIcon">
+                    <input type="text" name="mail" placeholder="USER NAME"><br>
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="True"></i>
+                </div><br>
+                <div class="InputIcon">
+                    <input type="password" name="text1" placeholder= "YOUR PASSWORD"><br>
+                    <i class="fa fa-lock fa-lg fa-fw" aria-hidden="True"></i>
+                </div><br>
+                <input type="checkbox" name="remember" id="but"><font size=+1>Remembre me</font><br><br>
+                <input type="submit" name="submit" id="but1" value="Sign in">&nbsp;&nbsp;
+                <input type="reset" name="reset" id="but2" style="background-color:#aaaaaa;" value="Reset"><br><br>
+            </form>
+        </div>
+        {% if message %}
+            <p style="align: center"><font size="+0.5"><mark style="background-color: red"> {{ message }} NOTE: select from which group you are</mark></font></p>
+        {% endif %}
+    </div>
+      <div class="cent" style= "width:624.5px; margin:0 auto;">
+        <ul>
+            <li><a href="#">Not registered?</a></li>
+            <li><a href="/register_form/" id="h">Register here</a></li>
+        </ul>
+    </div>
+    {% if success %}
+        <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+        <script>
+            swal('SUCCESS!!', '{{ success }}', 'success');
+        </script>
+    {% endif %}
+    </body>
+</html>

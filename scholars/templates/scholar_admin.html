@@ -1,0 +1,128 @@
+{% load staticfiles %}
+<html>
+<head><title>Confirm the details</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link rel="stylesheet"  type="text/css" href="{% static 'scholar_admin.css' %}">
+<style type="text/css">
+     body {
+            height: 100%;
+            padding: inherit;
+            align-content: center;
+            background-size: 100% 700px;
+            background: url('{% static "images/few.jpg"%}') fixed;
+        }
+    #button{
+        width: 600px;
+
+    }
+    textarea{
+        width: 600px;
+    }
+    </style>
+
+ </head>
+    <body>
+        <br>
+        <div>
+        <font size=+3><span style="color:white"> CONGRATULATIONS {{ scholar.Name.upper}}!!!</span></font>
+        <a href="/home"><button style="width:100px;height:30px;float:right;background-color:silver;color:blue;">GO BACK</button></a>
+        </div>
+    <div class="main1" style="width:1000px;margin:0 auto;margin-top:30px;"><br>
+        <font size=+2><p id="m">REGISTER YOUR DETAILS</p></font>
+         <form class="main2" action="/scholars/final/" method="post" style="padding-left: 200px;">{% csrf_token %}
+           <div class="iconinput">
+                <input type="text" name="usr" placeholder=" YOUR USERNAME" id="button" readonly="readonly" value="{{ scholar.Name.upper}}">
+                <br>
+                <i class="fa fa-user fa-lg fa-fw" aria-hidden="True"></i>
+            </div><br>
+
+             Date Of Birth &nbsp;:
+            <div class="iconinput" style="top:0px;">
+                <input type="text" name="dob" placeholder="DATE OF BIRTH(YYYY-MM-DD)" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="required format: YYYY-MM-DD" class="in" id="b" style="height: 50px;width:600px;padding-left: 40px">
+                <br>
+                <i class="fa fa-calendar fa-lg fa-fw" aria-hidden="True" style="top: 10px;"></i>
+            </div><br>
+            <div class="iconinput">
+                <input type="email" name="email" placeholder=" YOUR EMAIL ID" required id="button" value="{{ scholar.Mail }}"><br>
+                <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="True"></i>
+
+            </div>
+             <br>
+
+
+            <div class="iconinput">
+                <input type="text" name="phone" placeholder=" YOUR PHONE NUMBER" pattern="[9876][0-9]{9}" title="a valid mobile nubmer (example : 9535772090)" id="button">
+                <br>
+                <i class="fa fa-phone fa-lg fa-fw" aria-hidden="True"></i>
+            </div><br>
+             <div class="iconinput">
+                  <input type="text" name="master" value="{{ scholar.USN }}" style="display: none;" >
+                <input type="text" name="yearofj" placeholder="YEAR OF JOINING" id="button" value="2018" readonly="readonly">
+                <br>
+                <i class="fa fa-phone fa-lg fa-fw" aria-hidden="True"></i>
+
+            </div><br>
+            GENDER&nbsp;:<br><br>
+
+            <div class="iconinput">
+                <b style="color:black;left:10px;">  MALE: </b><input type="radio" name="GENDER" value="m"  id="but3">
+
+                <b style="color:black;"> FEMALE:</b> <input type="radio" name="GENDER" value="f" id="but3"><br><br>
+
+            </div>
+            <div class="iconinput">
+                <textarea name="address" placeholder=" YOUR ADDRESS" required id="button3" style="height:100px;"></textarea><br>
+                <i class="fa fa-address-card fa-lg fa-fw" aria-hidden="True"></i>
+
+            </div><br>
+            <div class="iconinput">
+                <input type="text" name="group" value="{{ option.Group.id }}" style="display: none">
+                <input type="text" name="groupname" placeholder=" THE ALLOTED DOMAIN" id="button" value="{{ option.Group.Name }}" readonly="readonly" ><br>
+                <i class="fa fa-users fa-lg fa-fw" aria-hidden="True"></i>
+            </div><br>
+            <div class="iconinput">
+                 <input type="text" name="guide" value="{{ option.Guide.USN }}" style="display: none">
+                <input type="text" name="guidename" placeholder=" THE ASSIGNED GUIDE" id="button"  value="{{ option.Guide.Name }}" readonly="readonly"><br>
+                <i class="fa fa-user fa-lg fa-fw" aria-hidden="True"></i>
+            </div><br>
+             COURSE TYPE<br><br>
+             <div class="iconinput">
+                <b style="color:black;left:10px;">  FULL_TIME </b><input type="radio" name="courset" value="full_time" id="but3">
+
+                <b style="color:black;"> PART_TIME</b> <input type="radio" name="courset" value="part_time" id="but3"><br><br>
+
+            </div>
+            <p style="color:black;opacity:0.9;">UPLOAD YOUR RECENT PHOTO:</p>
+            <div class="iconinput">
+                <input type="file" name="pic" value="fileupload" placeholder="UPLOAD YOUR RECENT PHOTO" id="button4" required>
+                </div><br>
+          <!--  <div class="iconinput">
+                <input type="password" name="setmailId" placeholder=" SET YOUR PASSWORD" id="button"><br>
+                <i class="fa fa-lock fa-lg fa-fw" aria-hidden="True"></i>
+
+            </div><br>
+            <div class="iconinput">
+                <input type="password" name="ConfirmedmailId" placeholder="CONFIRM YOUR PASSWORD" id="button"><br>
+                <i class="fa fa-lock fa-lg fa-fw" aria-hidden="True"></i>
+
+            </div>--><br>
+            <input type="submit"  value="SUBMIT" style="background-color:lavender" id="but1">
+
+
+              &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="reset" name="text" id="but2" value="CLEAR" style="background-color:#ccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="OKAY" id="subject1" style="background-color:lightgreen;" onclick="">
+               <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
+                $('#subject1').click(function()
+                     {
+                swal("CONGRATULATIONS!! ", " YOU HAVE THE DESIGNATION OF PHD SCHOLAR IN UVCE", "success");
+                });
+            </script>
+        </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,238 @@
+.header {
+    background-attachment: fixed;
+    opacity: 0.5;
+    color: white;
+    width: auto;
+    height: auto;
+}
+
+ body {
+     background: url('/static/images/Ultra-HD-Macbook-Air-Wallpapers.jpg') fixed;
+     height: 100%;
+     padding: inherit;
+     align-content: center;
+     background-size: 100% 700px;
+ }
+
+.main {
+
+    padding: 20px;
+    border-color: #aaa;
+    background-color: white;
+    opacity: 0.87;
+    border-radius: 10px;
+    width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    left: 6%;
+    float: left;
+    height: 128px;
+    align-content: center;
+    background-image: url('{% static "images/Ultra-HD-Macbook-Air-Wallpapers.jpg" %}');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.main1 {
+    position: fixed;
+    padding: 20px;
+    border-color: white;
+    background-color: #ccc;
+    opacity: 0.87;
+    border-radius: 10px;
+    width: 1100px;
+    position: relative;
+    left: 6%;
+    float: left;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.center {
+    display: block;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    float: left;
+
+}
+
+#det-hide {
+    padding: 15px;
+    width: inherit;
+    text-align: justify;
+    background-color: rgba(1, 0, 1, 0);
+    height: auto;
+    border: solid 1px #c3c3c3;
+    border-radius: 30px;
+    clear: both;
+}
+
+.header {
+    background-attachment: fixed;
+    opacity: 0.5;
+    text-align: center;
+
+}
+
+.second {
+
+    padding: 50px;
+    background-image: url(images/Cool-Website-Backgrounds600.jpg);
+    opacity: 0.95;
+    border-radius: 20px;
+    width: 1045px;
+    position: absolute;
+    left: 5%;
+    top: 540px;
+    bottom: 100px;
+    height: 250px;
+}
+
+button {
+    width: 400px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 17px;
+    box-sizing: border-box;
+}
+
+#form-wrapper {
+            padding: 10px;
+            width: 500px; /* Set this to your convenience */
+            height: 300px; /* Set this to your convenience */
+            position: absolute;
+            top: 230px;
+            left: 40%;
+            margin-top: -60px; /* Half of height */
+            margin-left: -100px;
+            background-color: whitesmoke;
+            border: 2px solid silver;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            border: 1px solid black
+        }
+
+#subject {
+    width: 100px;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 17px;
+    box-sizing: border-box;
+
+}
+
+.fr {
+    padding-left: 15px;
+}
+
+#subject1 {
+    width: 100px;
+    height: 50px;
+}
+
+input[type=text]input[type=password], #country {
+    width: 450px;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 17px;
+    box-sizing: border-box;
+
+}
+
+input[type=text]:focus {
+    border-color: green;
+
+}
+
+.modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            /* Fallback color */
+            background-color: rgba(0,0,0,0.7);/*rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+.close {
+    color: grey;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fr {
+    top: 110px;
+}
+
+#panel, #flip {
+    padding: 20px;
+    width: 1050px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: black;
+    border: solid 1px #c3c3c3;
+    color: white;
+    font-size: large;
+}
+
+#panel {
+    padding-left: 90px;
+    padding-right: 0px;
+    background-image: url(images/Preview-4.jpg);
+    width: inherit;
+    float: left;
+}
+
+.cent {
+    height: 150px;
+    border-radius: 50px;
+    position: relative;
+    float: left;
+    padding-left: 0px;
+    padding: 10px;
+
+}
+
+#bu {
+    color: white;
+    background-color: black;
+    width: 250px;
+    height: 50px;
+    outline: none;
+    border: 2px solid white;
+    float: right;
+    cursor: pointer;
+    margin-right: 20px;
+    padding: 10px;
+
+}
+
+p {
+
+}

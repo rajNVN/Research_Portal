@@ -1,0 +1,234 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Research_Portal</title>
+        <link rel="stylesheet" href="{% static 'main/home.css' %}"/></link>
+        <style type="text/css">
+            body
+            {
+                /*background: url('{% static "images/Ultra-HD-Macbook-Air-Wallpapers.jpg" %}') fixed;*/
+                height: 100%;
+                padding: inherit;
+                align-content: center;
+                background-size: 100% 700px;
+            }
+        </style>
+        <style>
+               .fr {
+            padding-left: 15px;
+        }
+
+        input[type=text],input[type=password],#country{
+            width: 450px;
+            border: 2px solid #aaa;
+            border-radius: 4px;
+            margin: 8px 0;
+            outline: none;
+            padding: 17px;
+            box-sizing: border-box;
+
+        }
+        input[type=text]:focus {
+            border-color: green;
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            /* Fallback color */
+            background-color: rgba(0,0,0,0.7);/*rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .close {
+            color: grey;
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #form-wrapper {
+            padding: 10px;
+            width: 500px; /* Set this to your convenience */
+            height: 300px; /* Set this to your convenience */
+            position: absolute;
+            top: 230px;
+            left: 40%;
+            margin-top: -60px; /* Half of height */
+            margin-left: -100px;
+            background-color: whitesmoke;
+            border: 2px solid silver;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            border: 1px solid black
+        }
+
+        input[type=submit]
+        {
+            border: 1px solid silver;
+            height: 50px;
+            width: 150px;
+            cursor: pointer;
+        }
+    </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+            $(document).ready(function(){
+                $("#flip").click(function(){
+                    $("#panel").slideToggle("slow");
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            function dis() {
+                var modal=document.getElementById('myModal');
+                modal.style.display = "block";
+            }
+            function dis2() {
+                document.getElementById('MyModal1').style.display = "none";
+
+            }
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+    </head>
+
+    <body id="bod">
+    {% if passcode %}
+        <div id="passcode" class="modal" style="display: block;">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div id="form-wrapper" id ="for" style="background-image: url('{% static 'images/7.jpg' %}');">
+                        <br><br>
+                        <label for="fname"><font face="Comic Sans MS" size=+1 color="black">Note: Note down below USN and passcode and keep it secretly So that you acan create your own user account</font></label><br>
+                        <!--<input type="text" name="reg" placeholder="" value="{{ passcode }}">-->
+                        <font size="+3"><mark  style="background-color: cadetblue;color: white;" >{{ newusn.upper }}</mark>
+                    <mark style="background-color:yellow;color: darkslategray;">{{ passcode }}</mark></font>
+                        <br><br>
+                        <label for="lname"><font face="Comic Sans MS " size=+1 color="black">this will be usefull to create any account in clg</font></label><br><br>
+                        <button id="subject" style="background-color:green;" onclick="document.getElementById('passcode').style.display = 'none';">OK</button>
+                </div>
+              </div>
+        </div>
+    {% endif %}
+    <h1 class="header"><b><i>RESEARCH PORTAL</i></b></h1>
+    <img src="{% static 'images/links.gif' %}" style="position:fixed; left:91% " onclick="document.getElementById('di').style.display='block'">
+    <div class="main">
+        <img src="{% static 'images/trans2.jpg  ' %}" alt="BABA" class="center"><br><br>
+        <font size=+2>UNIVERSITY VISVESVARAYA COLLEGE OF ENGINEERING</font><br>
+    </div>
+    <div class="main1">
+        <div style=" width : 1000px;">
+            <div id="flip">DON'T WORRY ABOUT DOING RESEARCH , JUST SEARCH </div>
+            <div id="panel">
+                <img src="{% static 'images/Huge-Backgrounds-63.jpg' %}" alt="BABA" class="cent">
+                <div class="j">
+                    "PURSUIT OF PhD IS AN ENDURING DARING ADVENTURE"<br><br>
+                    " RESEARCH IS WHAT I'M DOING WHEN I DON'T KNOW WHAT I AM DOING"<br><br>
+                    "RESEARCH IS TO SEE WHAT EVERYBODY HAS SEEN,AND TO THINK WHAT NOBODY ELSE HAS THOUGHT.!!"
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="second" id='di' style="display:none;margin:10px; background:url('{% static 'images/Cool-Website-Backgrounds600.jpg' %}');">
+        <br>
+        <a href="#" onclick="document.getElementById('myModal1').style.display = 'block';" style="color:white;"><font face="Comic Sans MS">ARE YOU A STUDENT FROM UVCE..WANT TO DO RESEARCH UNDER OUR PHD SCHOLARS  ??</font></a>
+        <br><br><br>
+        <div id="myModal1" class="modal">
+            <!-- Modal content -->
+            <div >
+                <div id="form-wrapper" style="height: auto">
+                    <span class="close" onclick="document.getElementById('myModal1').style.display = 'none';">&times;</span>
+                    <form class="fr" action="/students/register/" method="post">{% csrf_token %}
+                        <br><br>
+                        <label for="fname"><font face="Comic Sans MS" size=+1>ENTER REGISTER NUMBER:</font></label><br>
+                        <input type="text" name="reg" placeholder="YOUR REGISTER NUMBER " pattern="[0-9]{2}[Gg][Aa][EMem][a-zA-Z][0-9]{4}" title="sample : 16GAEI6066">
+                        <br>
+                        <label for="lname"><font face="Comic Sans MS " size=+1>PASSCODE given after admissions:</font></label><br>
+                        <input type="password" name="passcode" placeholder="">
+                        <br>
+                        <input type="submit" value="SUBMIT" id="subject" style="background-color:green;">
+                        {% if error %}
+                            <font size="+2"> <mark>{{ error }}</mark> </font>
+                        {% endif %}
+                    </form>
+                </div>
+              </div>
+        </div>
+         <div style="float:left">
+            <a href="#" style="color:white;" onclick="dis()"><font face="Comic Sans MS">ADMISSION FOR DOING PHD IN UVCE!!</font></a>
+        </div>
+       <div style="float:right;color:blue;font-size:22px;">new joinings is allowed from 05/06/2018 to 10/06/2018</div>
+        <br><br><br>
+        <div style="float:left">
+            <a href="/scholars/results/" style="color:white;font-size: 23px;"><font face="Comic Sans MS">Scholars selection results </font><font color="#8b0000"> this link is appearing only for demo purpose</font> </a>
+        </div>
+        <br><br><br>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content" >
+                <div id="form-wrapper" style="height: auto;">
+                    <span class="close" onclick="document.getElementById('myModal').style.display = 'none';">&times;</span>
+                    <form class="fr" action="/registerScholar/" method="post">{% csrf_token %}
+                        <br><br>
+                        <label for="fname"><font face="Comic Sans MS" size=+1>ENTER YOUR PREVIOUS EXAMINATION REGISTER NUMBER:</font></label><br>
+                        <input type="text" name="reg" placeholder="YOUR REGISTER NUMBER " pattern="[A-Za-z]{1,2}[0-9]{3,4}" title="format : A9193 or XF3321">
+                        <br>
+                        <label for="lname"><font face="Comic Sans MS " size=+1>PASSWORD:</font></label><br>
+                        <input type="password" name="pwd" placeholder="password">
+                        <br>
+                        <input type="submit" value="SUBMIT" id="subject" style="background-color:green;">
+                        {% if error %}
+                            <font size="+2"> <mark>{{ error }}</mark> </font>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+         <a href="/login_form/" style="color:white;font-size:23px;display: block;"><font face="Comic Sans MS">Login/Register</font></a>
+    </div>
+    {% if scholar %}
+        <script type="text/javascript">
+            document.getElementById('di').style.display='block';
+            document.getElementById('myModal').style.display = "block";
+        </script>
+    {% endif %}
+    {% if student %}
+        <script type="text/javascript">
+            document.getElementById('di').style.display='block';
+            document.getElementById('myModal1').style.display = "block";
+        </script>
+    {% endif %}
+    {% if student_registered %}
+        <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+        <script>
+            swal('CONGRATULATIONS!! {{ student_reg.Name.upper }}', '{{ student_registered }}', 'success');
+        </script>
+    {% endif %}
+    {% if scholar_registered %}
+        <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+        <script>
+            swal('CONGRATULATIONS!! {{ scholar_reg.Name.upper }}', '{{ scholar_registered }}', 'success');
+        </script>
+    {% endif %}
+    </body>
+</html>
